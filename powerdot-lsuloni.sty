@@ -1,0 +1,185 @@
+%% Powerdot Style file utilizing LSU color scheme: purple and gold
+%%  based of powerdot-bframe.sty
+%%  wget http://www.cct.lsu.edu/~apacheco/tutorials/TeX/powerdot-lsuloni.sty
+%% Modified by Alex Pacheco, High Performance Computing, Louisiana State University.
+%%  Dated: October 17, 2013
+%%  Email <apacheco_at_cct.lsu.edu> for comments or modifications.
+%% -----------------------------DISCLAIMER------------------------------------------
+%%  This style file is created for personal use and is not endorsed by
+%%     Louisiana State University, HPC @LSU or Center for Computation & Technology.
+%%  Feel free to use or modify them for personal use. 
+%%  All my changes are in comments below, only landscape mode is tested
+%%  Below is the original copyright and license information:
+%% ----------------------------------------------------------------------------------
+%%
+%% This is file `powerdot-bframe.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% powerdot.dtx  (with options: `pdbframe')
+%% 
+%% ---------------------------------------------------------------
+%% Copyright (C) 2005-2006, 2010 Hendri Adriaens and Christopher Ellison
+%% ---------------------------------------------------------------
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%
+%% This work has the LPPL maintenance status "maintained".
+%%
+%% This Current Maintainer of this work is Hendri Adriaens.
+%%
+%% This work consists of all files listed in manifest.txt.
+%%
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+%% changed to below \ProvidesPackage{powerdot-bframe}[2005/12/06 v1.1 bframe style (PRU,HA)]
+\ProvidesPackage{powerdot-lsuloni}[2013/10/17 v1.0 lsuloni style (PRU,HA)]
+\RequirePackage{pifont}
+\RequirePackage{pst-blur}
+\pddefinepalettes{default}{
+  \colorlet{pdcolor1}{white}
+  \definecolor{pdcolor2}{rgb}{0.95,0.91,0.78}%{.7,.1,.1}
+  \definecolor{pdcolor3}{rgb}{0.40,0.22,0.00}%{.01,.05,.56}
+}{lsu}{ % create palette for lsu colors
+  \colorlet{pdcolor1}{white}
+  \definecolor{pdcolor2}{rgb}{0.99,0.82,0.14}
+  \definecolor{pdcolor3}{rgb}{0.27,0.11,0.49}
+}% to add another palette modify the commented block below
+%{palettename}{define color for pdcolor1,pdcolor2 and pdcolor3}
+
+% define logo and box in the top left, change to your institution logo
+\newbox\pd@imagebox
+\pdifsetup{landscape}{
+  \sbox\pd@imagebox{\includegraphics[trim=0 -1 0 0,clip,% changed from 50 20 0 20 to 0 -1 0 0 
+    width=.17\slidewidth,height=.08\slideheight]{LSU.ps}%
+  }
+}{
+  \sbox\pd@imagebox{\includegraphics[trim=0 -1 0 0,clip,%changed from 170 0 80 0 not tested
+    width=.17\slidewidth,height=.05\slideheight]{LSU.ps}%changed from .1 to 0.05 not tested
+  }
+}
+\pddefinetemplate{basic}{
+  titlehook=B,titlefont=\large\bfseries\centering,
+  clockcolor=pdcolor3,clockpos={.99\slidewidth,\slideheight},
+  lfpos={.05\slidewidth,.02\slideheight}, %changed from .04 to .02
+  cfpos={.5\slidewidth,.02\slideheight}, %changed from .04 to .02
+  rfpos={.95\slidewidth,.02\slideheight}, %changed from .04 to .02
+  tocslidesep=.6ex,
+  toctcolor=white,
+  tochlcolor=pdcolor2,
+  ifsetup=portrait,
+    titlepos={.5\slidewidth,.91\slideheight},
+    titlewidth=.9\slidewidth,
+    textpos={.05\slidewidth,.85\slideheight},
+    textwidth=.9\slidewidth,textheight=.69\slideheight,
+    tocsecsep=.6ex,
+    stochook=tr,stocpos={.48\slidewidth,.13\slideheight},
+    stocfont=\tiny\raggedleft,
+    ntocpos={.52\slidewidth,.13\slideheight},
+  ifsetup=landscape,
+    titlepos={.58\slidewidth,.91\slideheight},
+    titlewidth=.75\slidewidth,
+    textpos={.2\slidewidth,.85\slideheight},
+    textwidth=.75\slidewidth,textheight=.69\slideheight
+}{
+% Add Logos on the top left (LSU) and top right (LONI)
+  \rput[tl](0.005\slidewidth,0.995\slideheight){\usebox\pd@imagebox}
+  \rput[tr](0.99\slidewidth,.995\slideheight){\includegraphics[trim=0 -1 0 0,clip,% changed from 50 20 0 20 to 0 -1 0 0 
+    width=.08\slidewidth,height=.09\slideheight]{LONI.ps}}
+}
+\pddefinetemplate[basic]{titleslide}{
+  texthook=t,textpos={.5\slidewidth,.75\slideheight},
+  textwidth=.9\slidewidth,textfont=\centering,
+  titlepos,textheight=.59\slideheight
+}\pd@bframebg
+\pddefinetemplate[basic]{wideslide}{
+  titlepos={.5\slidewidth,.95\slideheight},%changed from .91 to .95
+  titlewidth=.9\slidewidth,
+  textpos={.05\slidewidth,.85\slideheight},
+  textwidth=.9\slidewidth
+}\pd@bframebg
+\pddefinetemplate[basic]{slide}{
+  ifsetup=landscape,
+    tocpos={.025\slidewidth,.83\slideheight},%changed from 0.015 to 0.025
+    tocwidth=.14\slidewidth,
+    tocsecm={\psline[linewidth=.5pt,linecolor=pdcolor2]%
+      (-.05,-.05)(.143\slidewidth,-.05)}
+}{{%
+  \psset{linecolor=pdcolor3,shadow=true,blur=true,shadowcolor=gray!60}%
+  \pdifsetup{landscape}{%
+    \psframe*[framearc=.3](0.02\slidewidth,.90\slideheight)(.17\slidewidth,.065\slideheight)% changed from .15 to .065 and .87 to .90, from 0 to 0.02\slidewidth
+    \psframe*[framearc=.1](.18\slidewidth,.90\slideheight)(.98\slidewidth,.065\slideheight)% changed from .15 to .065 and .87 to .90
+    \psframe*[framearc=.3](.02\slidewidth,.01\slideheight)(.98\slidewidth,.05\slideheight)% changed from.08 to .05
+  }{%
+    \psframe*[framearc=.3](.02\slidewidth,.01\slideheight)(.98\slidewidth,.14\slideheight)%
+    \psframe*[framearc=.1](.02\slidewidth,.87\slideheight)(.98\slidewidth,.15\slideheight)%
+  }%
+}}
+\pddefinetemplate[slide]{sectionslide}{
+  titlehook=c,titlefont=\Large\bfseries\centering,
+  ifsetup=landscape,
+    titlepos={.575\slidewidth,.55\slideheight},
+  ifsetup=portrait,
+    titlepos={.5\slidewidth,.55\slideheight},
+}{}
+\pddefinetemplate[wideslide]{sectionwideslide}{
+  titlehook=c,titlefont=\color{white}\Large\bfseries\centering,
+  titlepos={.5\slidewidth,.55\slideheight},
+  titlewidth=.9\slidewidth
+}{}
+\def\pd@bframebg{{%
+  \pdifsetup{landscape}{%
+    \def\pd@tempa{.05\slideheight}%changed from .08 to .05
+  }{%
+    \def\pd@tempa{.14\slideheight}%
+  }%
+% Separate color for slide content and footer
+  \psset{linecolor=pdcolor2,shadow=true,blur=true,shadowcolor=gray!60}%slide footer
+  \psframe*[framearc=.3](.02\slidewidth,.01\slideheight)(.98\slidewidth,\pd@tempa)%
+  \psset{linecolor=pdcolor3,shadow=true,blur=true,shadowcolor=gray!60}%slide content change from pdcolor3 to black 
+  \psframe*[framearc=.1](.02\slidewidth,.90\slideheight)(.98\slidewidth,.065\slideheight)%changed from .87 to .9 and .15 to .065
+}}
+\def\pd@slidetitle#1{%
+  \settowidth\@tempdima{#1}%
+  \ifdim\@tempdima>\pd@@titlewidth\@tempdima\pd@@titlewidth\fi
+  \rput[B](0,0){\psframebox*[framearc=.3,fillcolor=pdcolor3,%slide title block
+    shadow=true,blur=true,shadowcolor=gray!60]{%
+      \parbox[b]\@tempdima{#1}%
+    }%
+  }%
+}
+\def\pd@title#1{%
+  {\let\thanks\@gobble\let\footnote\@gobble\settowidth\@tempdima{#1}}%
+  \ifdim\@tempdima>\pd@@titlewidth\@tempdima\pd@@titlewidth\fi
+  \advance\@tempdima-6pt
+  \psframebox*[framearc=.3,fillcolor=pdcolor2]{\parbox[b]\@tempdima{#1}}%
+}
+\setkeys[pd]{section}{sectemp=sectionslide,widesectemp=sectionwideslide}
+\pdifsetup{landscape}{\def\pd@tocslide#1{{\tiny\color{yellow}\ding{117}} #1}}{}
+\def\labelitemi{\color{pdcolor2}\footnotesize\ding{108}}%changed from 110 and added color
+\def\labelitemii{\color{pdcolor2}\small\ding{117}}%added color
+\def\labelitemiii{\color{pdcolor2}\small\ding{72}}%changed from 110 and added color
+\def\labelitemiv{\color{pdcolor2}\small\ding{88}}%added color
+% Enumerate with circled enumi
+%\newcommand*\circled[1]{\tikz[baseline=(char.base)]{%
+%            \node[shape=circle,fill=pdcolor2,draw=none,inner sep=1pt] (char) {\bfseries#1};}}
+\newcommand*\circled[1]{\kern-2.5em%
+  \put(0,3){\color{pdcolor2}\circle*{6}}%\put(0,4){\circle{8}}%
+  \put(-1.5,1){\color{black}\tiny#1}~~}
+\def\labelenumi{\tiny{\protect\circled{\color{black}\arabic*}}}
+\def\labelenumii{\tiny{\protect\circled{\color{black}\alph*}}}
+\def\labelenumiii{\tiny{\protect\circled{\color{black}\roman*}}}
+\def\labelenumiv{\tiny{\protect\circled{\color{black}\arabic*}}}
+\pdsetup{
+  list={labelsep=1em,leftmargin=*,itemsep=2pt,topsep=2pt,parsep=2pt}
+}
+\def\rmdefault{put}
+\endinput
+%%
+%% End of file `powerdot-bframe.sty'.
