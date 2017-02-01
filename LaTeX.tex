@@ -1,12 +1,22 @@
-\documentclass[style=lsuloni,orient=landscape]{powerdot}
+\documentclass[style=lehigh,orient=landscape]{powerdot}
 \pdsetup{
-  palette=lsu,
-  logopos={},
+  palette=lehigh,
+  logohook=tl,
+  logopos={0.005\slidewidth,0.995\slideheight},
+  logocmd={\includegraphics[trim=0 -1 0 0,clip,width=.30\slidewidth,height=.08\slideheight]{lehigh.eps}},
   lf={\color{black}Document Creation with \LaTeX{}},
-  cf={\color{black}Fall 2013 HPC Training},
+  %lf={\color{black}\sectiontitle},
+  cf={\color{black}HPC Training},
   theslide={\color{black}\arabic{slide}~/~\pageref*{lastslide}}
 }
  
+\definecolor{pdcolor2}{RGB}{241,231,200}%lucream
+\definecolor{pdcolor3}{RGB}{102,55,0}%lubrown
+\definecolor{lucyan}{RGB}{0,164,228}
+\definecolor{lumagenta}{RGB}{236,81,157}
+\definecolor{lugold}{RGB}{255,196,35}
+\definecolor{lupurple}{RGB}{125,129,190}
+
 \usepackage{mathtools,amsthm,amssymb,amsfonts}
 \usepackage{pifont,tgpagella,marvosym,wasysym}
 \usepackage{multicol,multirow}
@@ -36,21 +46,17 @@
   morekeywords={part,chapter,subsection,subsubsection,paragraph,subparagraph},
   identifierstyle=\color{magenta},
   commentstyle=\color{red},
-  backgroundcolor=\color{pdcolor3!90},
+  backgroundcolor=\color{pdcolor3},
   tabsize=2,
   columns=flexible,
   escapeinside={\%*}{*)},
 }
 
-\title{\color{black}Document Creation with \LaTeX{}}
-\author{Alexander B. Pacheco\\
-  HPC User Services \\
-  LSU HPC \& LONI\\
-  sys-help@loni.org
-}
-\date{HPC Training Fall 2013\\
-  Louisiana State University\\
-  October 30, 2013}
+\title{Document Creation with \LaTeX{}}
+\author{Alexander B. Pacheco}
+
+\date{LTS Research Computing}
+
 \begin{document}
 \maketitle
 \begin{wideslide}[toc=,bm=]{Overview}
@@ -202,8 +208,9 @@
                                          & WinEdt       & \cmark  &          &        \\
                                          & TeXnicCenter & \cmark  &          &        \\
         \hline
-        \multirow{2}{*}{Web Based}       & Authorea      & \multicolumn{3}{c|}{\url{https://authorea.com}}\\
-                                         & write\LaTeX{} & \multicolumn{3}{c|}{\url{https://www.writelatex.com}}\\
+        \multirow{3}{*}{Web Based}       & Share\LaTeX{} & \multicolumn{3}{c|}{\url{https://www.sharelatex.com}}\\
+                                         & Overleaf      & \multicolumn{3}{c|}{\url{https://www.overleaf.com}}\\
+                                         & Authorea      & \multicolumn{3}{c|}{\url{https://authorea.com}}\\
         \hline
         \end{tabular}
     \end{center}
@@ -2015,20 +2022,20 @@ The BibTeX file, asv.bib is included in the download tar file
   \end{lstlisting}
 \end{wideslide}
 
-\begin{wideslide}[]{Additional Help}
+\begin{wideslide}[]{Creating \LaTeX{} Presentations}
+  \begin{enumerate}
+  \item Beamer: The most popular package for creating presentations.
   \begin{itemize}
-  \item LONI Moodle Course on \LaTeX{}: \url{https://docs.loni.org/moodle}
-  \item Contact Us
-    \begin{itemize}
-    \item[\large{\color{pdcolor2}\Email}] Ticket System: sys-help@loni.org
-    \item[\large{\color{pdcolor2}\Telefon}] Help Desk: 225-578-0900
-    \item[\large{\color{pdcolor2}\smiley}] Instant Messenger (AIM, Yahoo Messenger, Google Talk)
-      \begin{itemize}
-      \item Add "lsuhpchelp"
-      \end{itemize}
-    \end{itemize}
-  \item HPC staff does not support users with their \LaTeX{} needs but feel to contact us regarding this tutorial or the LONI Moodle Course
+  \item Template: \url{https://github.com/alexpacheco/LehighBeamer}
+  \end{itemize}	
+  \item Powerdot: This presentation was created using the powerdot package.
+  \begin{itemize}
+  \item Source Files: \url{https://github.com/alexpacheco/latex}
   \end{itemize}
+  \item Prosper: \url{https://www.ctan.org/pkg/prosper?lang=en}
+  \item HA-prosper: \url{https://www.ctan.org/pkg/ha-prosper?lang=en}
+  \item Seminar: \url{https://www.ctan.org/pkg/seminar?lang=en}
+  \end{enumerate}
 \end{wideslide}
 
 \end{document}
