@@ -4,9 +4,9 @@
   logohook=tl,
   logopos={0.005\slidewidth,0.995\slideheight},
   logocmd={\includegraphics[trim=0 -1 0 0,clip,width=.30\slidewidth,height=.08\slideheight]{lehigh.eps}},
-  lf={\color{black}Document Creation with \LaTeX{}},
+  lf={\color{black}\LaTeX{} and Overleaf},
   %lf={\color{black}\sectiontitle},
-  cf={\color{black}Research Computing Seminars},
+  cf={\color{black}MATH 163},
   theslide={\color{black}\arabic{slide}~/~\pageref*{lastslide}}
 }
  
@@ -24,6 +24,14 @@
 \usepackage{showexpl,enumitem}
 \usepackage{graphicx}
 \usepackage{rotating}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{remark}{Remark}
 
 \renewcommand{\descriptionlabel}[1]%
    {\color{pdcolor2}\textbf{#1}}
@@ -52,13 +60,36 @@
   escapeinside={\%*}{*)},
 }
 
-\title{Document Creation with \LaTeX{}}
+\title{Creating Documents with \LaTeX{} and Overleaf}
 \author{Alexander B. Pacheco}
 
 \date{Research Computing}
 
 \begin{document}
 \maketitle
+
+\begin{wideslide}[toc=,bm=]{About Me}
+\vspace{\stretch{1}}
+\begin{itemize}
+    \item Manager of Research Computing, Library \& Technology Services.
+    \begin{itemize}
+        \item administer High Performance Computing (HPC) Clusters,
+        \item support Computational Science \& Engineering research on HPC.
+        \item Weekly HPC Seminars (\url{https://go.lehigh.edu/hpcseminars})
+        \item More detailed \LaTeX{} seminar on March 26.
+    \end{itemize}
+    \item Ph. D. (Chemistry) from University of Florida.
+    \item Started using \LaTeX{} in Graduate School circa 1999 for
+    \begin{itemize}
+        \item Presentations and Posters
+        \item Journal Articles and Research Reports
+        \item Dissertation
+        \item CV's and Cover Letters
+    \end{itemize}
+\end{itemize}
+\vspace{\stretch{1}}
+\end{wideslide}
+
 \begin{wideslide}[toc=,bm=]{Overview}
   \tableofcontents[content=sections]
 \end{wideslide}
@@ -119,110 +150,98 @@
   \end{itemize}
 \end{wideslide}
 
-\begin{wideslide}[toc=,bm={Terms regarding \TeX{}}]{Document Preparation Systems}
-  \begin{itemize}
-  \item A document preparation system such as \LaTeX{} is the combination of the \TeX{} language and the macros.
-    \begin{description}
-    \item[LaTeX]: designed by Leslie Lamport, it is actually a set of macros for \TeX{}. It aims at taking care of the formatting process.
-    \item[ConTEXT]: has a very consistent and easy syntax and support for pdfTeX, XeTeX and LuaTeX engines.
-    \item[TeX]: The original language designed by Donald Knuth
-      %\item \XeTeX{} \AMSLaTeX{} \BibTeX{} \WinEdt{} \LyX{} \ConTeXt{} \MikTeX{}
-    \end{description}
-  \item Engines
-    %  \begin{ablock}{Engines}
-    \begin{itemize}
-    \item An engine is an executable that can turn your source code into a printable output format. 
-    \item The engine by itself only handles the syntax, it also needs to load fonts and macros to fully understand the source code and generate output properly. 
-    \item The engine will determine what kind of source code it can read, and what format it can output (usually DVI or PDF).
-    \end{itemize}
-    \begin{description}
-    \item[{pdftex,pdflatex}]: PDF compilers
-    \item[{tex,latex}]: DVI compilers
-    \item[{luatex,lualatex}]: A \TeX{} engine with Lua scripting engine embedded
-    \end{description}
-    %  \end{ablock}
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[toc=]{Installing \LaTeX}
-  \begin{itemize}
-%  \begin{bblock}{Distributions}
-    \item Distributions
-      \begin{itemize}
-      \item \TeX{} distributions are collections of packages and programs (compilers, fonts, and macro packages) that enable you to typeset without having to manually fetch files and configure things.
-      \end{itemize}
-      \begin{description}
-      \item[{TeX Live}]: A cross platform \TeX{} distribution \url{http://www.tug.org/texlive}
-      \item[{MacTeX}]: A \TeX{} Live based distribution targeting Mac OS X \url{http://www.tug.org/mactex}
-      \item[{MikTeX}]: A \TeX{} distribution for Windows \url{http://www.miktex.org}
-      \end{description}
-%  \end{bblock}
-    \item Installation:
-      \begin{enumerate}
-      \item On Mac OSX, download the zip file and follow the instructions
-      \item On Windows, MikTeX has an easy installer that takes care of setting up the environment and downloading core packages.
-      \item On Linux, use the package manager (apt-get, yum, zypper etc) to download and install texlive and other additional packages. 
-      \item[] texlive should be present in main repositories. If not, your distribution web-site will have additional information.
-      \end{enumerate}
-  \end{itemize}
-\end{wideslide}
-
-%\begin{wideslide}[toc=]{Distributions}
-%  \begin{itemize}
-%  \item \TeX{} distributions are collections of packages and programs (compilers, fonts, and macro packages) that enable you to typeset without having to manually fetch files and configure things.
-%  \end{itemize}
-%  \begin{description}
-%  \item[{TeX Live}]: A cross platform \TeX{} distribution \url{http://www.tug.org/texlive}
-%  \item[{MacTeX}]: A \TeX{} Live based distribution targeting Mac OS X \url{http://www.tug.org/mactex}
-%  \item[{MikTeX}]: A \TeX{} distribution for Windows \url{http://www.miktex.org}
-%  \end{description}
+\section[slide=false]{Overleaf}
+%\begin{wideslide}[toc=,bm=]{Overview}
+%  \tableofcontents[content=currentsection,type=0]
 %\end{wideslide}
-
-\begin{wideslide}[toc=]{Which Editors to use to typeset documents?}
-  \begin{itemize}
-  \item \TeX{} and \LaTeX{} source documents (as well as related files) are all text files, and can be opened and modified in almost any text editor.
-  \item You should use a text editor (e.g. Notepad), not a word processor (Word, OpenOffice).
-  \end{itemize}
-  \vspace{-0.5cm}
-    \begin{center}
-      \begin{tabular}{|c|c|ccc|}
-        \hline
-        Type & Editor       & Windows & Mac OS X & Linux  \\
-        \hline
-        \multirow{5}{*}{Text Editor} & Vim          & \cmark  & \cmark   & \cmark \\
-                                     & Emacs        & \cmark  & \cmark   & \cmark \\
-                                     & gedit        &         &          & \cmark \\
-                                     & kate         &         &          & \cmark \\
-                                     & Notepad      & \cmark  &          &        \\
-        \hline
-        \multirow{3}{*}{WYSIWYG Editor} & LyX          & \cmark  & \cmark   & \cmark \\
-                                        & Bakoma TeX   & \cmark  & \cmark   & \cmark \\
-                                        & Gummi        & \cmark  &          & \cmark \\
-        \hline
-        \multirow{8}{*}{\LaTeX{} Editor} & TeXmaker     & \cmark  & \cmark   & \cmark \\
-                                         & TeXstudio    & \cmark  & \cmark   & \cmark \\
-                                         & TeXworks     & \cmark  & \cmark   & \cmark \\
-                                         & Kile         &         &          & \cmark \\
-                                         & TeXshop      &         & \cmark   &        \\
-                                         & TeXnicle     &         & \cmark   &        \\
-                                         & WinEdt       & \cmark  &          &        \\
-                                         & TeXnicCenter & \cmark  &          &        \\
-        \hline
-        \multirow{3}{*}{Web Based}       & Share\LaTeX{} & \multicolumn{3}{c|}{\url{https://www.sharelatex.com}}\\
-                                         & Overleaf      & \multicolumn{3}{c|}{\url{https://www.overleaf.com}}\\
-                                         & Authorea      & \multicolumn{3}{c|}{\url{https://authorea.com}}\\
-        \hline
-        \end{tabular}
-    \end{center}
-%    \begin{enumerate}
-%    \item Document sources can be read and edited with any text editor such as
-%    \item[\normalsize{\color{pdcolor2}\ding{229}}] vi/vim, emacs, gedit, kate, kwrite, Notepad. Word and OpenOffice are not text editors.
-%    \item There are other editors some with WYSIWYG-like features that take care of compiling the LaTeX source and updating it constantly to view changes to document almost in real time.
-%    \item[\normalsize{\color{pdcolor2}\ding{229}}] BaKoMa TeX (Windows \& Mac OS), Gummi (Linux \& Windows), LyX
-%    \item Dedicated \LaTeX{} editors that have auto-completion of commands, spell and error checking and handy macros.
-%    \item[\normalsize{\color{pdcolor2}\ding{229}}] TeXmaker, TeXstudio, TeXworks, Kile (Linux), WinEdt and TeXnicCenter (Windows).
-%    \end{enumerate}
+\begin{wideslide}{Overleaf}
+ \begin{itemize}
+  \item an online collaborative writing and publishing tool that makes the whole process of writing, editing and publishing scientific documents much quicker and easier. 
+  \item provides the convenience of an easy-to-use \LaTeX{} editor with real-time collaboration and the fully compiled output produced automatically in the background as you type.
+  \item makes the journal submission process smoother for \LaTeX{} users across many academic publishers.
+% \end{itemize}
+   \item Why use Overleaf?
+\begin{itemize}
+    \item cloud based product that only needs a web browser.
+    \item effortless sharing with collaborators.
+    \item compiles your project in the background, so you can see the output PDF right away.
+    \item real-time commenting and integrated chat, you can discuss your work without having to switch to email, printed versions or any other tool. 
+    \item Rich Text and \LaTeX{} modes if you prefer to see less of the code when you’re writing
+    \item Overleaf shows you errors and warnings as you go, so you can catch them early, and it shows them inline, so you don't have to find them in the \LaTeX{} log.
+    \item Write your thesis, create a calendar, make amazing presentations with the beamer package and create posters to showcase your work, all from a wide selection of popular templates. 
+    \item The real-time preview also helps when you're working with complicated tables, tikz figures and pgfplots graphs.
+\end{itemize}
+\end{itemize}
 \end{wideslide}
+
+\begin{wideslide}{Lehigh's Overleaf Commons Subscription}
+\begin{itemize}
+    \item Overleaf Professional accounts – for students, faculty and staff.
+    \begin{itemize}
+        \item Unlimited collaborators 
+        \item Full document history
+        \item Reference Manager Sync
+        \item Dropbox and Git/Github integration
+        \item 20GB of storage
+    \end{itemize}
+    \item Hassle-free license management - users simply register with their institutional email address on Overleaf (or add it to their existing Overleaf account) to join your Overleaf Commons license and receive their upgrade automatically.
+\end{itemize}
+\end{wideslide}
+
+\section[slide=false]{Getting Started}
+
+\begin{wideslide}{How do I Sign Up}
+\begin{itemize}
+    \item Visit \url{https://www.overleaf.com/register}
+    \item Sign up with your email address, Google or ORCID.
+    \begin{itemize}
+        \item Your Lehigh email address and Google account is valid as long as you are a student, staff or faculty.
+        \item Your Overleaf account is tied to the registered email address. If your email address is deactivated, you lose access to your overleaf account.
+        \item Consider using your personal email or Google account for registration.
+        \item Go to Account Settings and add your Lehigh email as your secondary email to convert to a Pro account.
+    \end{itemize}
+\end{itemize}
+\end{wideslide}
+
+\begin{wideslide}{How do I Create a document}
+    \begin{itemize}
+        \item Click on New Project in the left sidebar.
+        \item Choose from 
+        \begin{description}
+            \item[Blank Project]: Start with a empty .tex file.
+            \item[Example Project]: Start with an example article that overleaf provides.
+            \item[Upload Project]: Upload a zip file containing an existing \LaTeX{} project i.e. at least one .tex file.
+            \item[Import from Github]: Import an existing \LaTeX{} project from your Github account.
+        \end{description}
+    \end{itemize}
+\end{wideslide}
+
+\begin{wideslide}[method=direct]{My First \LaTeX{} Document}
+\begin{itemize}
+    \item Start with a Blank Document and add the following lines to it \begin{lstlisting}
+\documentclass[10pt]{article}
+
+\title{My First Document}
+\author{Enter your name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{My First Section}\label{section1}
+Hello World!
+
+\section{My Second Section}
+In Sec. \ref{section1}, we said Hello to the World.
+
+\end{document}
+\end{lstlisting}
+    \item Watch the document compile on the right window. Click "Recompile" for compiling the document on demand. 
+\end{itemize}
+\end{wideslide}
+
 
 \section[slide=false]{\LaTeX{} Basics}
 \begin{wideslide}[toc=,bm=]{Overview}
@@ -231,10 +250,10 @@
 
 \begin{wideslide}[bm={Syntax},method=file]{Syntax}
   \begin{itemize}
-  \item \LaTeX{} uses a markup language in order to describe document structure and presentation.
-  \item \LaTeX{} converts your source text, combined with the markup, into a high quality document.
+  \item LaTeX uses a markup language in order to describe document structure and presentation.
+  \item LaTeX converts your source text, combined with the markup, into a high quality document.
   \item For the purpose of analogy, web pages work in a similar way: the HTML is used to describe the document, but it is your browser that presents it in its full glory - with different colors, fonts, sizes, etc.
-  \item "Whitespace" characters such as space or tab are treated uniformly as "space" by \LaTeX{}.
+  \item "Whitespace" characters such as space or tab are treated uniformly as "space" by LaTeX.
   \item Several consecutive whitespace characters are treated as one "space".
   \end{itemize}	
 %  \begin{lstlisting}
@@ -247,7 +266,7 @@ Several consecutive whitespace characters such as          are treated as one sp
 
 \begin{wideslide}[bm={Reserved Characters},method=direct]{Reserved Characters}
   \begin{itemize}
-  \item \LaTeX{} has special characters or symbols that either have a special meaning or are bit available in all fonts.
+  \item LaTeX has special characters or symbols that either have a special meaning or are bit available in all fonts.
   \item If you enter them directly in your text, they will normally not print.
   \item To print these symbols, you need to be escape with a \textbackslash{} except \textbackslash{} itself since \textbackslash\textbackslash{} is reserved for line break.
   \end{itemize}
@@ -272,9 +291,47 @@ Several consecutive whitespace characters such as          are treated as one sp
   \end{center}
 \end{wideslide}
 
+\begin{wideslide}[bm={Comments},method=direct]{Comments}
+  \begin{itemize}
+  \item When LaTeX encounters a \% character while processing an input file, it ignores the rest of the current line, the line break, and all whitespace at the beginning of the next line.
+  \item This can be used to write notes into the input file, which will not show up in the printed version.
+    \begin{LTXexample}[numbers=none,pos=b,showspaces=true]
+This is an % stupid
+% Better: instructive <----
+example: Supercal%
+            ifragilist%
+icexpialidocious
+    \end{LTXexample}
+  \item Note that the \% character can be used to split long input lines that do not allow whitespace or line breaks, as with Supercalifragilisticexpialidocious above.
+  \item The core LaTeX language does not have a predefined syntax for commenting out regions spanning multiple lines.
+  \end{itemize}	
+\end{wideslide}
+
+\begin{wideslide}[bm={Commands},method=direct]{Commands}
+  \begin{itemize}
+  \item LaTeX commands are case sensitive, and take one of the following two formats:
+    \begin{itemize}
+    \item They start with a backslash \textbackslash and then have a name consisting of letters only. Command names are terminated by a space, a number or any other "non-letter".
+    \item They consist of a backslash \textbackslash and exactly one non-letter.
+    \end{itemize}
+  \item Some commands need an argument, which has to be given between curly braces \{ \} after the command name. 
+  \item Some commands support optional parameters, which are added after the command name in square brackets [ ]. 
+  \item The general syntax is:
+    \lstinline|\commandname[option1,option2,...]{argument1}{argument2}...|
+  \item Most standard LaTeX commands have a switch equivalent. 
+  \item Switches have no arguments but apply on the rest of the scope, i.e. the current group or environment. 
+  \item A switch should (almost) never be called outside of any scope, otherwise it will apply on the rest of the document.
+    \begin{LTXexample}[numbers=none,pos=r]
+{\bf This is in bold}\\
+\em This is in italics
+This is normal text
+  \end{LTXexample}
+  \end{itemize}	
+\end{wideslide}
+
 \begin{wideslide}[bm={Environments},method=direct]{Environments}
   \begin{itemize}
-  \item Environments in \LaTeX{} have a role that is quite similar to commands, but they usually have effect on a wider part of the document. 
+  \item Environments in LaTeX have a role that is quite similar to commands, but they usually have effect on a wider part of the document. 
   \item Their syntax is:
     \begin{lstlisting}
 \begin{environmentname}
@@ -284,7 +341,7 @@ text to be influenced
   \item Between the \lstinline|\begin| and the \lstinline|\end| you can put other commands and nested environments. 
   \item The internal mechanism of environments defines a group, which makes its usage safe (no influence on the other parts of the document).
   \item In general, environments can accept arguments as well, but this feature is not commonly used and so it will be discussed in more advanced parts of the document.
-  \item Anything in \LaTeX{} can be expressed in terms of commands and environments.
+  \item Anything in LaTeX can be expressed in terms of commands and environments.
   \end{itemize}	
 \end{wideslide}
 
@@ -301,47 +358,9 @@ This is normal text
   \end{LTXexample}
 \end{wideslide}
 
-\begin{wideslide}[bm={Commands},method=direct]{Commands}
-  \begin{itemize}
-  \item \LaTeX{} commands are case sensitive, and take one of the following two formats:
-    \begin{itemize}
-    \item They start with a backslash \textbackslash and then have a name consisting of letters only. Command names are terminated by a space, a number or any other "non-letter".
-    \item They consist of a backslash \textbackslash and exactly one non-letter.
-    \end{itemize}
-  \item Some commands need an argument, which has to be given between curly braces \{ \} after the command name. 
-  \item Some commands support optional parameters, which are added after the command name in square brackets [ ]. 
-  \item The general syntax is:
-    \lstinline|\commandname[option1,option2,...]{argument1}{argument2}...|
-  \item Most standard \LaTeX{} commands have a switch equivalent. 
-  \item Switches have no arguments but apply on the rest of the scope, i.e. the current group or environment. 
-  \item A switch should (almost) never be called outside of any scope, otherwise it will apply on the rest of the document.
-    \begin{LTXexample}[numbers=none,pos=r]
-{\bf This is in bold}\\
-\em This is in italics
-This is normal text
-  \end{LTXexample}
-  \end{itemize}	
-\end{wideslide}
-
-\begin{wideslide}[bm={Comments},method=direct]{Comments}
-  \begin{itemize}
-  \item When \LaTeX{} encounters a \% character while processing an input file, it ignores the rest of the current line, the line break, and all whitespace at the beginning of the next line.
-  \item This can be used to write notes into the input file, which will not show up in the printed version.
-    \begin{LTXexample}[numbers=none,pos=b,showspaces=true]
-This is an % stupid
-% Better: instructive <----
-example: Supercal%
-            ifragilist%
-icexpialidocious
-    \end{LTXexample}
-  \item Note that the \% character can be used to split long input lines that do not allow whitespace or line breaks, as with Supercalifragilisticexpialidocious above.
-  \item The core \LaTeX{} language does not have a predefined syntax for commenting out regions spanning multiple lines.
-  \end{itemize}	
-\end{wideslide}
-z
 \begin{wideslide}[method=direct]{Type Fonts}
   \begin{itemize}
-  \item The actual letters and symbols (collectively called type) that \LaTeX{} produces are characterized by their style and size.
+  \item The actual letters and symbols (collectively called type) that LaTeX produces are characterized by their style and size.
   \item A type style is specified by family, series and shape.
   \item Default font type is roman family, medium series and upright shape.
   \end{itemize}
@@ -369,8 +388,8 @@ z
 \begin{wideslide}[method=direct]{Type Size}
   \begin{itemize}
     \item Type size is traditional measured in (printer) points.
-    \item The default type produced by \LaTeX{} documents is 10pt size.
-    \item To change the type size, \LaTeX{} has ten declarations available
+    \item The default type produced by LaTeX documents is 10pt size.
+    \item To change the type size, LaTeX has ten declarations available
   \end{itemize}
   \begin{center}
     \begin{tabular}{|c|c|c|c|}
@@ -385,63 +404,35 @@ z
   \end{center}
 \end{wideslide}
 
-\begin{wideslide}[bm={My First \LaTeX{} Document},method=direct]{My First \LaTeX{} Document}
-  \begin{itemize}
-  \item Using your favorite text editor, create a file \texttt{hello.tex} that contains the following lines.
-  \end{itemize}	
-  \begin{lstlisting}
-    %My First LaTeX Document
-    \documentclass{article}
-    \begin{document}
-    Hello World!
-    \end{document}
-  \end{lstlisting}
-  \begin{itemize}
-  \item The first line is a comment. All comments begin with \% symbol.
-  \item The second line tells \LaTeX{} to use the article document class.
-  \item The \lstinline|\begin{document}| command begins the actual document, while
-  \item \lstinline|\end{document}| command ends the document.
-  \item The document content goes within \lstinline|\begin{document}| and \lstinline|\end{document}| commands.
-  \end{itemize}
-\end{wideslide}
+%\begin{wideslide}[bm={My First \LaTeX{} Document},method=direct]{My First \LaTeX{} Document}
+%  \begin{itemize}
+%  \item Using your favorite text editor, create a file \texttt{hello.tex} that contains the following lines.
+%  \end{itemize}	
+%  \begin{lstlisting}
+%    %My First LaTeX Document
+%    \documentclass{article}
+%    \begin{document}
+%    Hello World!
+%    \end{document}
+%  \end{lstlisting}
+%  \begin{itemize}
+%  \item The first line is a comment. All comments begin with \% symbol.
+%  \item The second line tells LaTeX to use the article document class.
+%  \item The \lstinline|\begin{document}| command begins the actual document, while
+%  \item \lstinline|\end{document}| command ends the document.
+%  \item The document content goes within %\lstinline|\begin{document}| and \lstinline|\end{document}| commands.
+%  \end{itemize}
+%\end{wideslide}
 
-\begin{wideslide}[bm={Compile \LaTeX{} Document},method=direct]{Compiling \LaTeX{} Document}
-  \begin{itemize}
-  \item Run one of the following two sets of commands from the command prompt
-    \begin{enumerate}
-    \item \texttt{\color{pdcolor2}latex hello}
-    \item \texttt{\color{pdcolor2}dvips hello} (If you can view postscript files)
-    \item \texttt{\color{pdcolor2}dvipdf hello}
-    \end{enumerate}
-  \item[\textbf{\color{pdcolor2}OR}]
-    \begin{enumerate}
-    \item \texttt{\color{pdcolor2}pdflatex hello}
-    \end{enumerate}
-  \item Open the pdf file created i.e. \texttt{\color{pdcolor2}hello.pdf}
-  \item If your computer has a DVI or postscript viewer, you can view the \texttt{\color{pdcolor2}hello.dvi} or \texttt{\color{pdcolor2}hello.ps} files.
-  \end{itemize}
-\end{wideslide}
 
-\begin{wideslide}[bm={Ancillary Files}]{Ancillary Files}
-  \begin{itemize}
-    \item \LaTeX{} compilation creates a bunch of files with various extensions to store temporary data to use for next compilation
-    \item[\color{pdcolor2}.aux]: A file that transports information from one compiler run to the next. Among other things, the .aux file is used to store information associated with cross-references.
-    \item[\color{pdcolor2}.log]: Gives a detailed account of what happened during the last compiler run.
-    \item[\color{pdcolor2}.toc]: Stores all your section headers. It gets read in for the next compiler run and is used to produce the table of contents.
-    \item[\color{pdcolor2}.lof]: This is like .toc but for the list of figures.
-    \item[\color{pdcolor2}.lot]: And again the same for the list of tables.
-    \item[\color{pdcolor2}.bbl]: Bibliography file output by BiBTeX and used by \LaTeX{}
-    \item[\color{pdcolor2}.blg]: BiBTeX log file. (errors are logged here)
-    \item[\color{pdcolor2}.dvi]: Device Independent File. This is the main result of a \LaTeX{} compile run with latex. You can look at its content with a DVI previewer program or you can send it to a printer with dvips or a similar application.
-  \end{itemize}
-\end{wideslide}
 
-\begin{emptyslide}[toc=,bm=]{}
-\centering
-\vspace{\stretch{1}}
-\includegraphics[height=0.9\slideheight]{./hello.ps}
-\vspace{\stretch{1}}
-\end{emptyslide}
+
+%\begin{emptyslide}[toc=,bm=]{}
+%\centering
+%\vspace{\stretch{1}}
+%\includegraphics[height=0.9\slideheight]{./hello.ps}
+%\vspace{\stretch{1}}
+%\end{emptyslide}
 
 \section[slide=false]{Document Structure}
 \begin{wideslide}[toc=,bm=]{Overview}
@@ -450,8 +441,8 @@ z
 
 \begin{wideslide}[toc=,method=direct]{\LaTeX{} File Structure}
   \begin{itemize}
-  \item When \LaTeX{} processes an input file, it expects it to follow a certain structure.
-  \item Every \LaTeX{} input file must contain the commands,
+  \item When LaTeX processes an input file, it expects it to follow a certain structure.
+  \item Every LaTeX input file must contain the commands,
     \begin{lstlisting}
 \documentclass{...}
 
@@ -486,9 +477,9 @@ z
 
 \begin{wideslide}[bm={Document Types},method=direct]{Document Types}
   \begin{itemize}
-  \item The first uncommented line of the \LaTeX{} document needs to describe the type of document that you are creating using
+  \item The first uncommented line of the LaTeX document needs to describe the type of document that you are creating using
   \item[] \lstinline|\documentclass[options]{documenttype}|
-  \item \LaTeX{} can be used to create documents of various types
+  \item LaTeX can be used to create documents of various types
     \begin{enumerate}
     \item article
     \item report
@@ -554,14 +545,14 @@ z
 
 \begin{wideslide}[method=direct]{Creating a Title Page}
   \begin{itemize}[][itemsep=1pt,parsep=1pt]
-  \item To create a title page \LaTeX{} has three commands.
+  \item To create a title page LaTeX has three commands.
     \begin{itemize}[][itemsep=1pt,parsep=1pt]
       \item \lstinline|\title{Title}| where Title is the title of your article, book or report.
       \item \lstinline|\author{FirstName LastName}|, if there are multiple authors, list them all delimited by a comma (,) or and.
       \item \lstinline|\date{\today}| to set the date when the article was created i.e. today
       \item[] If the date required is different from today, add the date that you need as in \lstinline|\date{Feb. 29, 2016}|
     \end{itemize}
-    \item If you are publishing a journal article, please see their \LaTeX{} templates and style files. Most of their style and class files  define additional commands such as \lstinline|\affiliation{...}|, \lstinline|\institution{...}|, etc.
+    \item If you are publishing a journal article, please see their LaTeX templates and style files. Most of their style and class files  define additional commands such as \lstinline|\affiliation{...}|, \lstinline|\institution{...}|, etc.
     \item To create the actual page, you need to add \lstinline|\maketitle| in your document i.e. after the \lstinline|\begin{document}| command.
     \item The \lstinline|\maketitle| is almost always the first line of your document content.
   \end{itemize}
@@ -613,9 +604,9 @@ z
   %    \item Bibliography if applicable
   %    \end{itemize}
   \begin{itemize}
-  \item \LaTeX{} provides 7 levels of depth for defining sections. The depth levels for the various commands are listed in column three in the above table. 
+  \item LaTeX provides 7 levels of depth for defining sections. The depth levels for the various commands are listed in column three in the above table. 
   \item The depth level of a section affects whether that section appears in the table of content or not. This can however be changed as we will see in the next few slides.
-  \item Since \LaTeX{} is used very often for writing scientific articles and reports, there are environments defined to create Abstract, Appendices and Bibliographies.
+  \item Since LaTeX is used very often for writing scientific articles and reports, there are environments defined to create Abstract, Appendices and Bibliographies.
   \end{itemize}
   %    \end{enumerate}
   %  \end{itemize}
@@ -623,7 +614,7 @@ z
 
 \begin{wideslide}[method=direct]{Section Numbering}
   \begin{itemize}
-  \item Numbering of the sections is performed automatically by \LaTeX{}.
+  \item Numbering of the sections is performed automatically by LaTeX.
   \item Parts get roman numerals (Part I, Part II, etc.); 
   \item chapters and sections get decimal numbering, and 
   \item appendices (which are just a special case of chapters, and share the same structure) are lettered (A, B, C, etc.).
@@ -639,7 +630,7 @@ z
 
 \begin{wideslide}[toc=,method=direct]{Abstract Environment}
   \begin{itemize}
-  \item As most research papers have an abstract, there are predefined commands for telling \LaTeX{} which part of the content makes up the abstract. 
+  \item As most research papers have an abstract, there are predefined commands for telling LaTeX which part of the content makes up the abstract. 
     \begin{itemize}
     \item This should appear in its logical order, therefore, after the top matter, but before the main sections of the body. 
     \item {\color{pdcolor2}\emph{This command is available for the document classes article and report, but not book.}}
@@ -649,7 +640,7 @@ z
   \end{itemize}
   \begin{LTXexample}[numbers=none,pos=b]
 \begin{abstract}
-In this article we discuss how to create simple \LaTeX{} documents. Topics include structuring a document, list environment, inserting equations and figures, creating tables and more.
+In this article we discuss how to create simple LaTeX documents. Topics include structuring a document, list environment, inserting equations and figures, creating tables and more.
 \end{abstract}
   \end{LTXexample}
 \end{wideslide}
@@ -713,13 +704,13 @@ In this article we discuss how to create simple \LaTeX{} documents. Topics inclu
 \begin{wideslide}[method=direct]{Cross Referencing}
   \begin{itemize}
   \item Since the various sectioning commands are numbered automatically, the chapter, section, etc numbers may not be known at the time of writing the document and may change as more content is added.
-  \item \LaTeX{} has a cross-reference system, which allows you to label the various sectioning commands to refer to them at point in the document.
+  \item LaTeX has a cross-reference system, which allows you to label the various sectioning commands to refer to them at point in the document.
   \item To label a command, use \lstinline|\label{name}| as in \lstinline|\chapter{Introduction}\label{chap:intro}| or \lstinline|\section{My First document}\label{first}|
   \item To reference the labeled section, use \lstinline|\ref{name}| as in 
     \begin{lstlisting}[basicstyle=\fontsize{6}{7}\selectfont\tt]
 \chapter{Introduction}\label{chap:intro}
 \section{My First document}\label{sec:first}
-In section \ref{sec:first} of Chapter \ref{chap:intro}, we wrote our first \LaTeX{} document
+In section \ref{sec:first} of Chapter \ref{chap:intro}, we wrote our first LaTeX document
     \end{lstlisting}
   \item The cross-reference commands \lstinline|\label{name}| and \lstinline|\ref{name}| can also be used for other content such as tables, figures and equations.
   \item To get the cross-referencing to show up correctly, you need to compile your document i.e. run latex filename or pdflatex filename two times.
@@ -733,7 +724,7 @@ In section \ref{sec:first} of Chapter \ref{chap:intro}, we wrote our first \LaTe
   \begin{itemize}
   \item All auto-numbered headings get entered in the Table of Contents (ToC) automatically.
   \item Just add the command \lstinline|\tableofcontents| at the point where you want it printed (usually after the title page).
-  \item Entries for the ToC are recorded each time you process your document, and reproduced the next time you process it, so you need to re-run \LaTeX{} one extra time to ensure that all ToC pagenumber references are correctly calculated.
+  \item Entries for the ToC are recorded each time you process your document, and reproduced the next time you process it, so you need to re-run LaTeX one extra time to ensure that all ToC pagenumber references are correctly calculated.
   \item The commands \lstinline|\listoffigures| and \lstinline|\listoftables| work in exactly the same way as \lstinline|\tableofcontents| to automatically list all your tables and figures, usually created after the TOC.
   \item The \lstinline|\tableofcontents| commands normally shows only numbered section headings.
   \item To add extra entries, use the \lstinline|\addcontentsline| command
@@ -762,22 +753,22 @@ In section \ref{sec:first} of Chapter \ref{chap:intro}, we wrote our first \LaTe
   \vspace{\stretch{1}}
   \begin{itemize}[][itemsep=1pt,parsep=1pt]
     \vspace{-0.2cm}
-  \item In \LaTeX{}, the document type determines its overall general properties, such as layout and sectioning.
-  \item However, it is possible to change the way certain commands work by invoking specific packages which may define new commands to add features that are not part of standard \LaTeX{}.
-  \item A \LaTeX{} packages is nothing more than a set of \LaTeX{} or \TeX{} commands stored in a file with an extension .sty.
+  \item In LaTeX, the document type determines its overall general properties, such as layout and sectioning.
+  \item However, it is possible to change the way certain commands work by invoking specific packages which may define new commands to add features that are not part of standard LaTeX.
+  \item A LaTeX packages is nothing more than a set of LaTeX or TeX commands stored in a file with an extension .sty.
   \item To use a package, add \lstinline|\usepackage[options]{packagename}| in the preamble of the document.
   \item[] The \lstinline|[options]| is optional and some packages do not provide options at all.
   \item There are hundreds of useful packages and listing them all is beyond the scope of this tutorial.
   \item Some of the most commonly used packages are:
     {\fontsize{7}{8}\selectfont
       \begin{description}[][itemsep=1pt,parsep=1pt]
-      \item[amsmath] contains the advanced math extensions for \LaTeX{}
+      \item[amsmath] contains the advanced math extensions for LaTeX
       \item[graphicx] manage external pictures.
       \item[color] adds support for colored text.
       \item[geometry] easy management of document margins and the document page size.
       \item[inputenc] choose the encoding of the input text.
-      \item[babel] provides the internationalization of \LaTeX{}. It has to be loaded in any document, and you have to give as an option the main language you are going to use in the document. e.x. \lstinline|\usepackage[english]{babel}|
-      \item[hyperref] It gives \LaTeX{} the possibility to manage links within the document or to any URL when you compile in PDF.
+      \item[babel] provides the internationalization of LaTeX. It has to be loaded in any document, and you have to give as an option the main language you are going to use in the document. e.x. \lstinline|\usepackage[english]{babel}|
+      \item[hyperref] It gives LaTeX the possibility to manage links within the document or to any URL when you compile in PDF.
       \item[cite] assists in citation management.
       \item[natbib] gives additional citation options and styles.
       \end{description}
@@ -786,52 +777,6 @@ In section \ref{sec:first} of Chapter \ref{chap:intro}, we wrote our first \LaTe
   \vspace{\stretch{1}}
 \end{wideslide}
 
-\begin{wideslide}[method=direct]{Modular Document}
-  \begin{itemize}
-  \item As your work grows, your \LaTeX{} file can become unwieldy and confusing, especially if you are writing a long article with substantial, discrete sections, or a full-length book.
-  \item In such cases it is good practice to split your work into several files. 
-  \item  For example, if you are writing a book, it makes a lot of sense to write each chapter in a separate .tex file.
-  \item \LaTeX{} makes this very easy thanks to two commands:
-  \item[] \lstinline|\input{filename}|
-  \item[] and
-  \item[] \lstinline|\include{filename}|
-  \item Both these commands process the contents of filename.tex.
-  \item When the compiler processes your base file (the file that contains these statements) and reaches the command \lstinline|\input| or \lstinline|\include|, it reads filename.tex and processes its content in accordance with the formatting commands specified in the base file.
-  \item This way you can put all the formatting options in your base file and then \lstinline|\input| or \lstinline|\include|  the files which contain the actual content of your work.
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[toc=,bm=,method=direct]{Modular Document}
-  \begin{itemize}
-  \item There are some differences between these two commands:
-    \begin{enumerate}
-    \item You cannot nest \lstinline|\include| statements within a file added via \lstinline|\include|, whereas \lstinline|\input|, on the other hand, allows you to call files which themselves call other files, ad infinitum (well, nearly!).
-    \item[]  You can, however, \lstinline|\include| a file which contains one or more \lstinline|\input| commands.
-    \item \lstinline|\include| will force a page break (which makes it ideal for a book's chapters), whereas the \lstinline|\input| command does not.
-    \end{enumerate}
-    \begin{lstlisting}[basicstyle=\fontsize{5}{6}\selectfont\tt]
-\documentclass{article}
-\begin{document}
-\input{Section_1}
-\input{Section_2}
-\input{Section_3}
-\input{Section_4}
-\input{Section_5}
-\end{document}
-    \end{lstlisting}
-  \item The \lstinline|\includeonly{filename1,filename2}| allows you to compile your document by including only the files listed in the curly braces.
-    \begin{lstlisting}[basicstyle=\fontsize{5}{6}\selectfont\tt]
-\documentclass{book}
-\includeonly{Chapter_1,Chapter_4}  % compile just chapters 1 and 4, space characters not permitted
-\begin{document}
-\include{Chapter_1}                % omit the '.tex' extension
-\include{Chapter_2}
-\include{Chapter_3}
-\include{Chapter_4}
-\end{document}
-    \end{lstlisting}
-  \end{itemize}
-\end{wideslide}
 
 \section[slide=false]{Typesetting}
 \begin{wideslide}[toc=,bm=]{Overview}
@@ -840,7 +785,7 @@ In section \ref{sec:first} of Chapter \ref{chap:intro}, we wrote our first \LaTe
 
 \begin{wideslide}[method=direct]{Foreign Letters \& Accents}
   \begin{itemize}
-  \item Special letters that exist in European languages can be generated with \TeX{}.
+  \item Special letters that exist in European languages can be generated with TeX.
     \begin{center}
       \begin{tabular}{|cc|cc|cc|cc|cc|cc|}
         \hline
@@ -849,7 +794,7 @@ In section \ref{sec:first} of Chapter \ref{chap:intro}, we wrote our first \LaTe
         \hline
       \end{tabular}
     \end{center}
-  \item In non-English languages, there is a multiplicity of diacritic marks or accents, most of which can be printed with \TeX{}.
+  \item In non-English languages, there is a multiplicity of diacritic marks or accents, most of which can be printed with TeX.
   \item The examples below are shown for the letter "o" but can be used with any letter.
     \begin{center}
       \begin{tabular}{|cc|cc|cc|cc|cc|}
@@ -867,10 +812,10 @@ In section \ref{sec:first} of Chapter \ref{chap:intro}, we wrote our first \LaTe
 
 \begin{wideslide}[bm={Mathematics},method=direct]{Mathematics}
   \begin{itemize}
-    \item One of the greatest motivating forces for Donald Knuth when he began developing the original \TeX{} system was to create something that allowed simple construction of mathematical formulas, while looking professional when printed.
-    \item Typesetting mathematics is one of \LaTeX{}'s greatest strengths.
-    \item If your document requires only a few simple mathematical formulas, plain \LaTeX{} has most of the tools that you will need.
-    \item If you are writing a scientific document that contains numerous complicated formulas, the {\color{magenta}amsmath} package introduces several new commands that are more powerful and flexible than the ones provided by \LaTeX{}.
+    \item One of the greatest motivating forces for Donald Knuth when he began developing the original TeX system was to create something that allowed simple construction of mathematical formulas, while looking professional when printed.
+    \item Typesetting mathematics is one of LaTeX's greatest strengths.
+    \item If your document requires only a few simple mathematical formulas, plain LaTeX has most of the tools that you will need.
+    \item If you are writing a scientific document that contains numerous complicated formulas, the {\color{magenta}amsmath} package introduces several new commands that are more powerful and flexible than the ones provided by LaTeX.
     \item The {\color{magenta}mathtools} package fixes some {\color{magenta}amsmath} quirks and adds some useful settings, symbols, and environments to amsmath.
     \item To use either package, include \lstinline|\usepackage{amsmath}| or \lstinline|\usepackage{mathtools}| in the preamble of the document.
     \item The {\color{magenta}mathtools} package loads the {\color{magenta}amsmath} package and hence there is no need to add \lstinline|\usepackage{amsmath}| in the preamble if {\color{magenta}mathtools} is used.
@@ -879,8 +824,8 @@ In section \ref{sec:first} of Chapter \ref{chap:intro}, we wrote our first \LaTe
 
 \begin{wideslide}[toc=,bm=,method=direct]{Mathematics (contd)}
   \begin{itemize}
-  \item \LaTeX{} needs to know beforehand that the subsequent text does indeed contain mathematical elements. 
-  \item This is because \LaTeX{} typesets maths notation differently from normal text. Therefore, special environments have been declared for this purpose. 
+  \item LaTeX needs to know beforehand that the subsequent text does indeed contain mathematical elements. 
+  \item This is because LaTeX typesets maths notation differently from normal text. Therefore, special environments have been declared for this purpose. 
   \item They can be distinguished into two categories depending on how they are presented:
     \begin{description}
     \item[text] text formulas are displayed inline, that is, within the body of text where it is declared, for example, I can say that $a + a = 2a$ within this sentence.
@@ -896,8 +841,8 @@ In section \ref{sec:first} of Chapter \ref{chap:intro}, we wrote our first \LaTe
       \hline
       Environment & math & displaymath & equation \\
       Requires & & & amsmath \\
-      \LaTeX{} shorthand & \lstinline|\( ... \)| & \lstinline|\[ ... \]| & \\
-      \TeX{} shorthand & \lstinline|$ ... $| & \lstinline|$$ ... $$| & \\
+      LaTeX shorthand & \lstinline|\( ... \)| & \lstinline|\[ ... \]| & \\
+      TeX shorthand & \lstinline|$ ... $| & \lstinline|$$ ... $$| & \\
       Comment & & & starred version suppresses numbering \\
       \hline
     \end{tabular}
@@ -909,7 +854,7 @@ In section \ref{sec:first} of Chapter \ref{chap:intro}, we wrote our first \LaTe
 \begin{wideslide}[method=direct]{Math Symbols}
   \begin{itemize}
     \item Mathematics has many symbols!
-    \item One of the most difficult aspects of learning \LaTeX{} is remembering how to produce symbols.
+    \item One of the most difficult aspects of learning LaTeX is remembering how to produce symbols.
     \item The following set of symbols can be accessed directly from the keyboard
     \item[] \lstinline_+  -  =  !  /  (  )  [  ]  <  >  |  '  :_
     \item Beyond those listed above, distinct commands must be issued in order to display the desired symbols. 
@@ -919,8 +864,8 @@ $\forall x \in X, \quad \exists y \leq \epsilon$
       \end{LTXexample}
     \item Fortunately, there's a tool that can greatly simplify the search for the command for a specific symbol.
       \begin{itemize}
-      \item Detexify: applet for looking up \LaTeX{} symbols by drawing them \url{http://detexify.kirelabs.org/classify.html}
-      \item The Comprehensive \LaTeX{} Symbol List \url{http://www.ctan.org/tex-archive/info/symbols/comprehensive}
+      \item Detexify: applet for looking up LaTeX symbols by drawing them \url{http://detexify.kirelabs.org/classify.html}
+      \item The Comprehensive LaTeX Symbol List \url{http://www.ctan.org/tex-archive/info/symbols/comprehensive}
       \end{itemize}
   \end{itemize}
 \end{wideslide}
@@ -952,7 +897,7 @@ x^{y^2}, x^{y_1}, A^{x_i^2}_{j^{2n}_{n,m}}
     \item If you need to write normal text with superscripts or subscripts, you need to use special commands to typeset the fonts correctly
       {\fontsize{6}{7}\selectfont
         \begin{LTXexample}[numbers=none,pos=b,basicstyle=\fontsize{6}{7}\selectfont\tt]
-The HPC Training on \LaTeX{} will be held on Oct. $30^{th}$, 2013.\\
+The HPC Training on LaTeX will be held on Oct. $30^{th}$, 2013.\\
 A better way to write this is to set the superscript th in roman font using Oct. $30^{\mathrm{th}}$
         \end{LTXexample}
       }
@@ -1190,7 +1135,7 @@ Note that in math mode as in the normal text i.e. anything other than numbers or
   }
 \end{wideslide}
 
-\begin{wideslide}[toc=,method=direct]{Equations in \LaTeX{}}
+\begin{wideslide}[toc=,method=direct]{Equations in LaTeX}
   \begin{itemize}
   \item There are several environments available to write equations.
     \begin{enumerate}
@@ -1267,7 +1212,7 @@ Note that in math mode as in the normal text i.e. anything other than numbers or
 
 \begin{wideslide}[toc=,bm=,method=direct]{Multiline Equations}
   \begin{itemize}
-    \item \LaTeX{} has a multline environment for writing long equations that need to split across multiple lines.
+    \item LaTeX has a multline environment for writing long equations that need to split across multiple lines.
     \item The multline environment switches to math mode at the start and back to text mode at the end.
     \item The line break occurs when \lstinline|\\| is encountered.
     \item By default, the first line is left justified, the last line is right justified while all others are centered.
@@ -1350,7 +1295,7 @@ ghi & jkl & mno
 
 \begin{wideslide}[toc=,bm=,method=direct]{Matrices}
   \begin{itemize}
-  \item use the predefined \LaTeX{} environments.
+  \item use the predefined LaTeX environments.
     \begin{center}
       \begin{tabular}{|c|c|}
         \hline
@@ -1433,9 +1378,83 @@ ghi & jkl & mno
   \end{itemize}
 \end{wideslide}
 
-\begin{wideslide}[method=direct]{Creating Lists}
+\begin{wideslide}[bm={Theorems, Lemmas and Corollaries},method=file]{Theorems, Lemmas and Corollaries}
   \begin{itemize}
-    \item \LaTeX{} has several environments to create bulleted or numbered lists.
+      \item Mathematical documents include elements that require special formatting and numbering such as theorems, definitions, propositions, remarks, corollaries, lemmas and so on.
+      \item Make sure you have the amsthm package enabled: \lstinline|\usepackage{amsthm}|
+     \item In the preamble, add \lstinline|\newtheorem{name}{Printed output}|
+     \item The first argument is the name of the environment that is defined, the second argument is the word that will be printed, in boldface font, at the beginning of the environment. 
+     \item For example: add \lstinline|\newtheorem{theorem}{theorem}| to preamble and the following within the document.
+     \begin{LTXexample}[numbers=none,pos=b]
+\begin{theorem}
+Let $f$ be a function whose derivative exists in every point, then $f$ 
+is a continuous function.
+\end{theorem}
+     \end{LTXexample}
+  \end{itemize}
+\end{wideslide}
+
+\begin{wideslide}[toc=,bm={ },method=direct]{Theorems, Lemmas and Corollaries}
+  \begin{itemize}
+     \item You can add a name within brackets in the environment opening command
+\begin{LTXexample}[numbers=none,pos=b]
+\begin{theorem}[Pythagorean theorem]
+\label{pythagorean}
+This is a theorem about right triangles summarised by 
+equation 
+\[ x^2 + y^2 = z^2 \]
+\end{theorem}
+\end{LTXexample}
+     \item The \lstinline|\newtheorem| command accepts different options to change the numbering style
+     \item \lstinline|\newtheorem{theorem}{Theorem}[section]|: restart the theorem counter for each section.
+     \item \lstinline|\newtheorem{lemma}[theorem]{Lemma}|: Create a new environment lemma that uses the same counter as theorem.
+     \item \lstinline|\newtheorem{corollary}{Corollary}[theorem]|: Create a new environment corollary such that the counter is reset every time a new theorem environment is used.
+     \item \lstinline|\newtheorem*{remark}{remark}|: Create an unnumbered environment for remarks and comments.
+  \end{itemize}
+\end{wideslide}
+
+\begin{wideslide}[bm={Proofs},method=direct]{Proofs}
+\vspace{-0.5cm}
+\begin{LTXexample}[numbers=none,pos=b]
+\begin{corollary}
+There's no right rectangle whose sides measure 3cm, 4cm, and 6cm.
+\end{corollary}
+\begin{lemma}
+Given two line segments whose lengths are $a$ and $b$ respectively there is a 
+real number $r$ such that $b=ra$.
+\end{lemma}
+\begin{corollary}
+There's no right rectangle whose sides measure 3cm, 4cm, and 6cm.
+\end{corollary}
+\begin{remark}
+This statement is true, I guess.
+\end{remark}
+\end{LTXexample}
+\end{wideslide}
+
+
+\begin{wideslide}[toc=,bm={},method=direct]{Proofs}
+  \begin{itemize}
+  \item Proofs are the core of mathematical papers and books and is customary to keep them visually apart from the normal text in the document. 
+\begin{LTXexample}[numbers=none,pos=b]
+  \begin{lemma}
+Given two line segments whose lengths are $a$ and $b$ respectively there 
+is a real number $r$ such that $b=ra$.
+\end{lemma}
+
+\begin{proof}
+To prove it by contradiction try and assume that the statement is false,
+proceed from there and at some point you will arrive to a contradiction.
+\end{proof}
+\end{LTXexample}
+  \item A special symbol is used to mark the end of the proof. 
+  \item To change the symbol to say a blacksquare, add \lstinline|\renewcommand\qedsymbol{$\blacksquare$}| to the preamble
+  \end{itemize}
+\end{wideslide}
+
+\begin{wideslide}[method=direct]{Lists}
+  \begin{itemize}
+    \item LaTeX has several environments to create bulleted or numbered lists.
     \item itemize environment, creates a bulleted list.
     \item enumerate environment, creates a numbered list.
     \item description environment, creates a list with text instead of bullets and numbers.
@@ -1480,7 +1499,7 @@ ghi & jkl & mno
 \vspace{\stretch{1}}
 \end{emptyslide}
 
-\begin{wideslide}[bm={Creating Tables},method=file]{Creating Tables}
+\begin{wideslide}[bm={Tables},method=direct]{Tables}
   \begin{itemize}
   \item Tables are created within the tabular environment.
   \item The arguments to the tabular environment is the positional alignment of all columns in the table.
@@ -1507,7 +1526,7 @@ R3C1 & & R3C3 \\
 
 \begin{wideslide}[toc=,bm=,method=direct]{More on Tables}
   \begin{itemize}
-  \item Creating fancy tables with one column spanning multiple columns is possible with \LaTeX{}.
+  \item Creating fancy tables with one column spanning multiple columns is possible with LaTeX.
   \item use the command \lstinline|\multicolumn{num}{col}{text}| where 
     \begin{itemize}
     \item num columns are merged into one,
@@ -1560,8 +1579,8 @@ Forward & FW & Jamie McMaster \\ \hline
   \begin{itemize}
   \item The tabular environment does not create a caption.
   \item If you need captions, the tabular environment needs to be within a table environment.
-  \item The table environment is basically a floating table and \LaTeX{} will place it at the earliest location without causing excessive space.
-  \item[] i.e. if the table cannot fit at the location of content where entered, then \LaTeX{} will put the table on the next page and add content that follows the table at the current location.
+  \item The table environment is basically a floating table and LaTeX will place it at the earliest location without causing excessive space.
+  \item[] i.e. if the table cannot fit at the location of content where entered, then LaTeX will put the table on the next page and add content that follows the table at the current location.
   \item Usage: \lstinline|\begin{table}[loc] ... \end{table}|
   \item The caption can be either at the top i.e. before the table contents or at the bottom i.e. after the table contents.
   \item The caption is specified using \lstinline|\caption[short title]{title}|
@@ -1603,7 +1622,7 @@ Forward & FW & Jamie McMaster \\ \hline
 
 \begin{wideslide}[method=direct]{Inserting Figures}
   \begin{itemize}
-  \item \LaTeX{} cannot manage pictures directly.
+  \item LaTeX cannot manage pictures directly.
   \item We need to load the {\color{magenta}graphicx} package in the preamble of the document.
   \item[] \lstinline|\usepackage[options]{graphicx}|
   \item This package accepts as an optional argument the external driver to be used to manage pictures,
@@ -1620,7 +1639,7 @@ Forward & FW & Jamie McMaster \\ \hline
   \end{itemize}
 \end{wideslide}
 
-\begin{wideslide}[toc=,bm=,method=direct]{Inserting Figures}
+\begin{wideslide}[toc=,bm=,method=direct]{Figures}
   \begin{itemize}
   \item You can include images using the command
   \item[] \lstinline|\includegraphics[attr1=val1, attr2=val2, ..., attrn=valn]{imagename}|
@@ -1652,7 +1671,7 @@ Forward & FW & Jamie McMaster \\ \hline
     \item In WYSIWYG document processors, it is common to put tables and figures in the middle of the text.
     \item Professional documents, however, often make it a point to print tables and figures on a dedicated page so that they do not disrupt the flow.
     \item From the point of view of the source code, one has no idea on which page the current text is going to lie, so it is hardly possible to guess which page may be appropriate for our table.
-    \item \LaTeX{} can automate this task by abstracting objects such as tables and pictures, and decide for us where they might fit best. This abstraction is called a float.
+    \item LaTeX can automate this task by abstracting objects such as tables and pictures, and decide for us where they might fit best. This abstraction is called a float.
     \item The table and figure environment create a table and figure as float respectively.
     \item For Example: \lstinline|\begin{table}[loc] ... \end{table}| OR \lstinline|\begin{figure}[loc] ... \end{figure}|
     \item where loc is the position of the table (or figure) and  can be one of the following
@@ -1662,346 +1681,10 @@ Forward & FW & Jamie McMaster \\ \hline
         \item[b] : Print the table (or figure) at the bottom of the page.
         \item[p] : Print the table (or figure) as a float on pages along with other floating tables and figures in sequence.
       \end{description}
-    \item Default location is tbp i.e. \LaTeX{} will try to put the floating table or figure first at the top of the page, bottom of the page or on a separate page depending on the accompanying content.
+    \item Default location is tbp i.e. LaTeX will try to put the floating table or figure first at the top of the page, bottom of the page or on a separate page depending on the accompanying content.
   \end{itemize}
 \end{wideslide}
 
-\section[slide=false]{User Customization}
-\begin{wideslide}[toc=,bm=]{Overview}
-  \tableofcontents[content=currentsection,type=0]
-\end{wideslide}
-
-\begin{wideslide}[bm={User Defined Counters},method=direct]{User Defined Counters}
-  \begin{itemize}
-  \item \LaTeX{} manages a number of counters by giving them initial values at the start and changing these values when certain commands are called
-    {\fontsize{6}{7}\selectfont
-      \begin{center}
-        \begin{tabular}{ccccc}
-          part & chapter & section & subsection & subsubsection \\
-          paragraph & subparagraph & page  \\
-          equation & figure & table & footnote & mpfootnote \\
-          enumi & enumii & enumiii & enumiv \\
-        \end{tabular}
-      \end{center}
-    }
-  \item A user may create a new counter with the command \lstinline|\newcounter{counter name}[in counter]|
-  \item[] where "counter name" is the name of the newly established counter, and
-  \item[] "in counter", an optional argument is the name of an already established counter. 
-  \item Whenever "in counter" is incremented using the commands \lstinline|\stepcounter| or \lstinline|\refstepcounter|, the "counter name" counter is reset to zero.
-  \item Changing counter values:
-    \begin{itemize}[][itemsep=1pt,parsep=1pt]
-    \item \lstinline|\setcounter{counter}{num}|: "counter" is assigned the integer value "num".
-    \item \lstinline|\addtocounter{counter}{num}|: value of "counter" is increased by integer value (positive or negative) "num".
-    \item \lstinline|\stepcounter{counter}|: value of "counter" is incremented by one and all its subcounters are reset to zero.
-    \item \lstinline|\refstepcounter{counter}|: same effect as \lstinline|\stepcounter{counter}|.
-    \item \lstinline|\value{counter}|: Treat the value of the "counter" as a number mostly used with \lstinline|\stepcounter| or \lstinline|\addtocounter|.
-    \end{itemize}
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[method=direct]{Printing counter values}
-  \begin{itemize}
-    \item The numerical value in a counter can be printed with the commands
-      {\fontsize{6}{7}\selectfont
-        \begin{center}
-          \begin{tabular}{ccc}
-            \lstinline|\arabic{counter}| & Arabic number & $1,2,3,\cdots,$\\
-            \lstinline|\Roman{counter}| & Uppercase Roman numeral & $I,II,III,IV,\cdots,$\\
-            \lstinline|\roman{counter}| & Lowercase Roman numeral & $i,ii,iii,iv,\cdots,$\\
-            \lstinline|\alph{counter}| & Lowercase letter & a,b,c,d,$\cdots,$\\
-            \lstinline|\Alph{counter}| & Uppercase letter & A,B,C,D,$\cdots,$\\
-            \lstinline|\fnsymbol{counter}| & footnote symbol & $\ast,\dag,\ddag,\S,\P,\|,\ast\ast,\dag\dag,\ddag\ddag$\\
-          \end{tabular}
-        \end{center}
-      }
-    \item For each counter, a command of the form \lstinline|\thecounter| is also available such as \lstinline|\thepage|.
-    \item This type of command is initially set to \lstinline|\arabic{counter}| but may be redefined to be composed of several counter commands.
-    \item[] For e.g., the command \lstinline|\thesection| in book and report is defined as \lstinline|\arabic{chapter}.\arabic{section}| and \lstinline|\thesection| will print say 7.1
-    \item To change the counter commands, the user need to redefine the counter commands.
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[method=direct]{User Defined Commands}
-  \begin{itemize}
-    \item New commands may be defined or redefined using the commands:
-    \item[] \lstinline|\newcommand{\com_name}[narg][opt]{def}|
-    \item[] \lstinline|\renewcommand{\com_name}[narg][opt]{def}|
-    \item The first version defines a command \lstinline|\com_name| which does not exist yet while
-    \item the second version redefines an already existing command \lstinline|\com_name|
-    \item "narg" is a number between 1 and 9 specifying how many arguments the new or already command is to have,
-    \item "opt" gives the default value for an optional argument that the new command may take, and 
-    \item "def" is the actual definition of the new command.
-    \item Example:
-      \begin{itemize}[][itemsep=1pt,parsep=1pt]
-        \item To redefine $x_1,\ldots,x_n$ which may occur at regular intervals
-          {\fontsize{6}{7}\selectfont
-            \begin{LTXexample}[basicstyle=\fontsize{6}{7}\selectfont\tt,pos=r,numbers=none]
-\newcommand{\xvec}{$x_1,\ldots,x_n$}
-Redefine $x_1,\ldots,x_n$ as \xvec
-            \end{LTXexample}
-          }
-        \item Redefine chapter, section and subsection numbering as I.i.a instead of 1.1.1
-          \begin{lstlisting}[basicstyle=\fontsize{6}{7}\selectfont\tt]
-\newcommand{\thechapter}{\Roman{chapter}}
-\newcommand{\thesection}{\thechapter.\roman{section}}
-\newcommand{\thesubsection}{\thesection.\alph{subsection}}
-          \end{lstlisting}
-      \end{itemize}
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[method=direct,toc=,bm=]{User Defined Commands (contd)}
-  \vspace{-0.4cm}
-  \begin{itemize}[][itemsep=1pt,parsep=1pt]
-  \item Define commands with arguments, say $x_1,\ldots,x_n$, $y_1,\ldots,y_n$ and $z_1,\ldots,z_n$
-    {\fontsize{5}{6}\selectfont
-      \begin{LTXexample}[basicstyle=\fontsize{5}{6}\selectfont\tt,pos=b,numbers=none]
-\newcommand{\avec}[1]{\ensuremath{#1_1,\ldots,#1_n}}
-Now $x_1,\ldots,x_n$, $y_1,\ldots,y_n$ and $z_1,\ldots,z_n$ can be written as \avec{x}, \avec{y} and \avec{z} in text mode or $\avec{x}$, $\avec{y}$ and $\avec{z}$ in math mode.
-      \end{LTXexample}
-    }
-  \item The \lstinline|\ensuremath| command permits using the newly defined command in both math and text mode.
-  \item Define commands with optional arguments
-    {\fontsize{5}{6}\selectfont
-      \begin{LTXexample}[basicstyle=\fontsize{5}{6}\selectfont\tt,pos=b,numbers=none]
-\newcommand{\subvec}[3][x]{\ensuremath{#1_{#2},\ldots,#1_{#3}}}
-\subvec{i}{j} prints $x_i,\ldots,x_j$ while \subvec[a]{1}{n} prints $a_1,\ldots,a_n$.
-      \end{LTXexample}
-    }
-  \item To change the first level of itemize from filled circle to asterix, and second level of enumerate to be similar to the section numbering i.e. 1.i, 2.iii,  etc
-    \begin{lstlisting}[basicstyle=\fontsize{5}{6}\selectfont\tt]
-\renewcommand{\labelitemi}{$\ast$}
-\renewcommand{\theenumii}{\roman{enumii}}
-\renewcommand{\labelenumii}{\theenumi.~\theenumii}
-    \end{lstlisting}
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[method=direct]{Page Layout}
-  \begin{itemize}
-    \item The page layout, twoside, oneside, paper type can be set as options to \lstinline|\documentclass|.
-    \item One of the most versatile packages for page layout is the {\color{magenta}geometry} package.
-    \item The immediate advantage of this package is that it lets you customize the page size even with classes that do not support the options.
-    \item Usage: \lstinline|\usepackage[options]{geometry}|
-    \item The {\color{magenta}geometry} package has many pre-defined pages sizes such as a0paper, a1paper, $\cdots$, a6paper, b0paper, b1paper, $\cdots$, b6paper, letterpaper, legalpaper and executive paper.
-    \item To explicitly change the paper dimensions using the {\color{magenta}geometry} package, the paperwidth and paperheight options can be used. 
-    \item[] For example: \lstinline|\usepackage[paperwidth=5.5in, paperheight=8.5in]{geometry}|
-    \item Changing size manually: Use the \lstinline|\setlength| command in the preamble to adjust the parameters to the appropriate dimensions.
-    \item[] \lstinline|\setlength{\paperwidth}{5.5in}| and \lstinline|\setlength{\paperheight}{8.5in}|
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[toc=,bm=,method=direct]{Page Layout}
-  \begin{itemize}[][itemsep=1pt,parsep=1pt]
-  \item All pages in a \LaTeX{} document have a header and footer.
-  \item The header usually contains the document title or chapter title.
-  \item The footer contains the page number.
-  \item There are two commands to change to the headers in plain \LaTeX{}.
-  \item[] \lstinline|\pagestyle{"style"}| will apply the specified style to the current and all subsequent pages, and
-  \item[] \lstinline|\thispagestyle{"style"}| will only affect the current page.
-  \item The possible styles are:
-    \begin{description}
-    \item[empty] Both header and footer are cleared.
-    \item[plain] Header is clear, but the footer contains the page number in the center.
-    \item[headings] Footer is blank, header displays information according to document class (e.g., section name) and page number top right.
-    \item[myheadings] Page number is top right, and it is possible to control the rest of the header.
-    \end{description}
-  \item For example, if you put \lstinline|\thispagestyle{empty}|, then no headers and footers (page number) for that page will not be printed.
-  \item You can begin a newpage with the command \lstinline|\newpage|.
-  \item The commands \lstinline|\clearpage| and \lstinline|\cleardoublepage| ends the current page and causes all figures and tables that have so far appeared in the input to be printed.
-  \item In a two-sided printing style, \lstinline|\cleardoublepage| also makes the next page a right-hand (odd-numbered) page, producing a blank page if necessary.
-  \end{itemize}
-\end{wideslide}
-
-\section[slide=false]{Bibiliography}
-\begin{wideslide}[toc=,bm=]{Overview}
-  \tableofcontents[content=currentsection,type=0]
-\end{wideslide}
-\begin{wideslide}{Bibliography Management}
-  \begin{itemize}
-    \item For any academic/research writing, incorporating references into a document is an important task.
-    \item Fortunately, \LaTeX{} has a variety of features that make dealing with references much simpler, including built-in support for citing references.
-    \item However, a much more powerful and flexible solution is achieved thanks to an auxiliary tool called BibTeX (which comes bundled as standard with \LaTeX{}).
-    \item BibTeX provides for the storage of all references in an external, flat-file database.
-    \item This database can be referenced in any \LaTeX{} document, and citations made to any record that is contained within the file.
-    \item This is often more convenient than embedding them at the end of every document written; a centralized bibliography source can be linked to as many documents as desired (write once, read many!).
-    \item bibliographies can be split over as many files as one wishes, so there can be a file containing sources concerning topic A (a.bib) and another concerning topic B (b.bib). 
-    \item When writing about topic AB, both of these files can be linked into the document (perhaps in addition to sources ab.bib specific to topic AB).
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[method=direct]{Embedded system}
-  \begin{itemize}
-  \item \LaTeX{} provides an environment called thebibliography that you have to use where you want the bibliography; that usually means at the very end of your document, just before the \lstinline|\end{document}| command.
-  \item[] Example
-    \begin{lstlisting}[basicstyle=\fontsize{6}{7}\selectfont\tt]
-\begin{thebibliography}{9}
-\bibitem{lamport94}
-  Leslie Lamport,
-  \emph{\LaTeX: A Document Preparation System}.
-  Addison Wesley, Massachusetts,
-  2nd Edition,
-  1994.
-\end{thebibliography}
-    \end{lstlisting}
-  \item thebibliography is a keyword that \LaTeX{} recognizes as everything between the begin and end tags as being data for the bibliography.
-  \item The mandatory argument is telling \LaTeX{} how wide the item label will be when printed.
-  \item In the above example, reference label with only one digit i.e. upto 9 references will be printed.
-  \item To actually cite a given document, go to the point where you want the citation to appear, and use the following: \lstinline|\cite{cite_key}|, where the cite\_key is that of the bibitem you wish to cite.
-  \item To cite the above example, type \lstinline|\cite{lamport94}|.
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[toc=,bm=,method=direct]{Embedded system}
-  \begin{itemize}
-  \item To cite a sequence of multiple references, use a single cite command with keys separated by commands.
-  \item[] \lstinline|\cite{citation1,citation2,citation3}| 
-  \item If you only want a reference to appear in the bibliography, but not where it is referenced in the main text, then the nocite command can be used,
-  \item[] \lstinline|\nocite{citation1,citation2,citation3}|
-  \item A special version of the command, \lstinline|\nocite{*}|, includes all entries from the database, whether they are referenced in the document or not.
-  \item To compile a latex document and get the bibliographies listed correctly, you need to run {\color{pdcolor2}latex filename} or {\color{pdcolor2}pdflatex filename} two times.
-  \item If you do not run latex or pdflatex two times after the bibtex command, your citation references will not show up in the text and you will see warnings such as ,
-  \item[] "LaTeX Warning: There were undefined references."
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[method=direct]{Bibliographic Database}
-  \begin{itemize}
-  \item Instead of writing the bibitems at the end of each document, it would be convenient if one can create a database of such bibliographic entries which will then be available for all documents.
-  \item BIBTeX is an auxiliary program to \LaTeX{} that automatically constructs a bibliography by searching one or more databases.
-  \item To this end, the \LaTeX{} file must contain the command \lstinline|\bibliography{database1,database2,...}| at the point where the bibliography is to appear.
-  \item The argument database1, database2 is the root name of the database that are to be searched and has an extension .bib.
-  \item The reference is again made with the \lstinline|\cite{key}| or \lstinline|\nocite{key}| command.
-  \item The style of the bibliography can be selected using the command \lstinline|\bibliographystyle{style}| where style can one of the following values,
-    {\fontsize{7}{8}\selectfont
-      \begin{description}[][itemsep=1pt,parsep=1pt]
-      \item[plain]: The entries in the bibliography are ordered alphabetically, each is assigned a running number in square brackets.
-      \item[unsrt]: The entries are ordered according to their first references by the cite and nocite commands.
-      \item[alpha]: Same as plain but the markers are an abbreviation of the author's name plus year of publication.
-      \item[abbrv]: Same as plain but bibliography listing is shortened by abbreviating first names, months and journal names.
-      \end{description}
-    }
-  \item To compile a \LaTeX{} document, you now need to run the following sequence of commands,
-    {\fontsize{7}{8}\selectfont
-      \begin{enumerate}[][itemsep=1pt,parsep=1pt]
-        \item latex filename (or pdflatex filename)
-        \item bibtex filename
-        \item latex filename (or pdflatex filename) $\times 2$
-      \end{enumerate}
-    }
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[method=direct]{BibTeX File}
-  \begin{itemize}[][itemsep=1pt,parsep=1pt]
-  \item The bibliography database is a plain text file with a .bib extension,
-    \begin{lstlisting}[basicstyle=\fontsize{5}{6}\selectfont\tt]
-@article{greenwade93,
-    author  = ``George D. Greenwade'',
-    title   = ``The {C}omprehensive {T}ex {A}rchive {N}etwork ({CTAN})'',
-    year    = ``1993'',
-    journal = ``TUGBoat'',
-    volume  = ``14'',
-    number  = ``3'',
-    pages   = ``342--351''
-}
-@book{goossens93,
-    author    = ``Michel Goossens and Frank Mittelbach and Alexander Samarin'',
-    title     = ``The LaTeX Companion'',
-    year      = ``1993'',
-    publisher = ``Addison-Wesley'',
-    address   = ``Reading, Massachusetts''
-}
-    \end{lstlisting}
-  \item Common types for entries in a BibTeX file are 
-    {\fontsize{7}{8}\selectfont
-      \begin{description}[][itemsep=1pt,parsep=1pt]
-      \item[@article]: An article from a magazine or a journal.
-      \item[@book]: A published book.
-      \item[@proceedings]: The proceedings of a conference. Can also use \@conference.
-      \item[@phdthesis]: Ph.D. thesis.
-      \item[@manual]: Technical manual.
-      \item[@inbook]: A section of a book without its own title.
-      \item[@inproceedings]: An article in a conference proceedings.
-      \item[@techreport]: Technical report from educational, commercial or standardization institution.
-      \item[@unpublished]: An unpublished article, book, thesis, etc.
-      \end{description}
-    }
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[method=direct]{natbib package}
-  \begin{itemize}[][itemsep=1pt,parsep=1pt]
-  \item Using the standard \LaTeX{} bibliography support, you will see that each reference is numbered and each citation corresponds to the numbers.
-  \item The numeric style of citation is quite common in scientific writing.
-  \item In other disciplines, the author-year style, e.g., (Roberts, 2003), such as Harvard is preferred.
-  \item The {\color{magenta}natbib} package is used to get such an output and it can supersede \LaTeX{}'s own citation commands.
-  \item To use the natbib citation style, you need to add \lstinline|\usepackage[options]{natbib}| to the document preamble.
-  \item The options to the {\color{magenta}natbib} package are
-    {\fontsize{7}{8}\selectfont
-      \begin{description}[][itemsep=1pt,parsep=1pt]
-      \item[round]: Parenthesis (\,) which is the default i.e. citation reference will be included within (\,)
-      \item[square]: Square Brackets [\,]
-      \item[curly]: Curly Braces \{\,\}
-      \item[angle]: Angle brackets $<\,>$
-      \item[colon]: multiple citations are separated by semi-colons (default)
-      \item[comma]: multiple citations are separated by commas
-      \item[authoryear]: author year style citations (default)
-      \item[numbers]: numeric citations
-      \item[super]: superscripted numeric citations
-      \item[sort]: multiple citations are sorted into the order in which they appear in the references section
-      \item[sort\&compress]: as sort, compressing multiple numeric citations where possible
-      \end{description}
-    }
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[method=direct,toc=,bm=]{natbib package}
-  \begin{itemize}
-  \item The {\color{magenta}natbib} package gives access to more citation commands as well as additional bibliography styles that are commonly used in scientific journals.
-  \end{itemize}
-  {\fontsize{6}{7}\selectfont
-    \begin{center}
-      \begin{tabular}{|c|c|}
-        \hline
-        \multicolumn{2}{|c|}{Natbib Commands}\\
-        \hline
-        Citation Command & Output \\
-        \hline
-        \lstinline[basicstyle=\fontsize{6}{7}\selectfont\tt]|\cite{goossens93}| & Goossens et al. (1993) \\
-        \lstinline[basicstyle=\fontsize{6}{7}\selectfont\tt]|\citep{goossens93}| & (Goossens et al., 1993) \\
-        \lstinline[basicstyle=\fontsize{6}{7}\selectfont\tt]|\citet*{goossens93}| & Goossens, Mittlebach, and Samarin (1993) \\
-        \lstinline[basicstyle=\fontsize{6}{7}\selectfont\tt]|\citep*{goossens93}| & (Goossens, Mittlebach, and Samarin, 1993) \\
-        \lstinline[basicstyle=\fontsize{6}{7}\selectfont\tt]|\citeauthor{goossens93}| & Goossens et al. \\
-        \lstinline[basicstyle=\fontsize{6}{7}\selectfont\tt]|\citeauthor*{goossens93}| & Goossens, Mittlebach, and Samarin \\
-        \lstinline[basicstyle=\fontsize{6}{7}\selectfont\tt]|\citeyear{goossens93}| & 1993 \\
-        \lstinline[basicstyle=\fontsize{6}{7}\selectfont\tt]|\citeyearpar{goossens93}| & (1993) \\
-        \lstinline[basicstyle=\fontsize{6}{7}\selectfont\tt]|\citealt{goossens93}| & Goossens et al. 1993 \\
-        \lstinline[basicstyle=\fontsize{6}{7}\selectfont\tt]|\citealp{goossens93}| & Goossens et al., 1993 \\
-        \lstinline[basicstyle=\fontsize{6}{7}\selectfont\tt]|\citetext{priv.\ comm.}| & (priv. comm.) \\
-        \hline
-      \end{tabular}
-    \end{center}
-    \begin{center}
-      \begin{tabular}{|c|c|}
-        \hline
-        \multicolumn{2}{|c|}{Natbib-compatible styles}\\
-        \hline
-        Style & Description \\
-        \hline
-        plainnat & natbib-compatible version of plain \\
-        abbrvnat & natbib-compatible version of abbrv \\
-        unsrtnat & natbib-compatible version of unsrt \\
-        apsrev & natbib-compatible style for Physical Review journals \\
-        rmpaps & natbib-compatible style for Review of Modern Physics journals \\
-        IEEEtranN & natbib-compatible style for IEEE publications \\
-        achemso & natbib-compatible style for American Chemical Society journals \\
-        rsc & natbib-compatible style for Royal Society of Chemistry journals \\
-        \hline
-      \end{tabular}
-    \end{center}
-  }
-\end{wideslide}
 
 \section[slide=false]{Wrap Up}
 \begin{wideslide}[toc=,bm=]{Overview}

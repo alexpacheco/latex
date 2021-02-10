@@ -8,6 +8,7 @@ This tutorial provides an overview of using LaTeX for creating documents
 
 <br />
 <br />
+
 ### Powerdot Style File for presentation
 
  * [LSU](powerdot-lsuloni.sty)
