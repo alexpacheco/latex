@@ -4,7 +4,7 @@
   logohook=tl,
   logopos={0.005\slidewidth,0.995\slideheight},
   logocmd={\includegraphics[trim=0 -1 0 0,clip,width=.30\slidewidth,height=.08\slideheight]{lehigh.eps}},
-  lf={\color{black}Document Creation with \LaTeX{}},
+  lf={\color{black}Creating Documents with \LaTeX{}},
   %lf={\color{black}\sectiontitle},
   cf={\color{black}Research Computing Seminars},
   theslide={\color{black}\arabic{slide}~/~\pageref*{lastslide}}
@@ -24,6 +24,14 @@
 \usepackage{showexpl,enumitem}
 \usepackage{graphicx}
 \usepackage{rotating}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{remark}{Remark}
 
 \renewcommand{\descriptionlabel}[1]%
    {\color{pdcolor2}\textbf{#1}}
@@ -52,7 +60,7 @@
   escapeinside={\%*}{*)},
 }
 
-\title{Document Creation with \LaTeX{}}
+\title{Creating Documents with \LaTeX{}}
 \author{Alexander B. Pacheco}
 
 \date{Research Computing}
@@ -208,8 +216,7 @@
                                          & WinEdt       & \cmark  &          &        \\
                                          & TeXnicCenter & \cmark  &          &        \\
         \hline
-        \multirow{3}{*}{Web Based}       & Share\LaTeX{} & \multicolumn{3}{c|}{\url{https://www.sharelatex.com}}\\
-                                         & Overleaf      & \multicolumn{3}{c|}{\url{https://www.overleaf.com}}\\
+        \multirow{2}{*}{Web Based}       & Overleaf      & \multicolumn{3}{c|}{\url{https://www.overleaf.com}}\\
                                          & Authorea      & \multicolumn{3}{c|}{\url{https://authorea.com}}\\
         \hline
         \end{tabular}
@@ -224,10 +231,134 @@
 %    \end{enumerate}
 \end{wideslide}
 
+\section[slide=false]{Overleaf}
+%\begin{wideslide}[toc=,bm=]{Overview}
+%  \tableofcontents[content=currentsection,type=0]
+%\end{wideslide}
+\begin{wideslide}{Overleaf}
+ \begin{itemize}
+  \item an online collaborative writing and publishing tool that makes the whole process of writing, editing and publishing scientific documents much quicker and easier. 
+  \item provides the convenience of an easy-to-use \LaTeX{} editor with real-time collaboration and the fully compiled output produced automatically in the background as you type.
+  \item makes the journal submission process smoother for \LaTeX{} users across many academic publishers.
+% \end{itemize}
+   \item Why use Overleaf?
+\begin{itemize}
+    \item cloud based product that only needs a web browser.
+    \item effortless sharing with collaborators.
+    \item compiles your project in the background, so you can see the output PDF right away.
+    \item real-time commenting and integrated chat, you can discuss your work without having to switch to email, printed versions or any other tool. 
+    \item Rich Text and \LaTeX{} modes if you prefer to see less of the code when you’re writing
+    \item Overleaf shows you errors and warnings as you go, so you can catch them early, and it shows them inline, so you don't have to find them in the \LaTeX{} log.
+    \item Write your thesis, create a calendar, make amazing presentations with the beamer package and create posters to showcase your work, all from a wide selection of popular templates. 
+    \item The real-time preview also helps when you're working with complicated tables, tikz figures and pgfplots graphs.
+\end{itemize}
+\end{itemize}
+\end{wideslide}
+
+\begin{wideslide}{Lehigh's Overleaf Commons Subscription}
+\begin{itemize}
+    \item Overleaf Professional accounts – for students, faculty and staff.
+    \begin{itemize}
+        \item Unlimited collaborators 
+        \item Full document history
+        \item Reference Manager Sync
+        \item Dropbox and Git/Github integration
+        \item 20GB of storage
+    \end{itemize}
+    \item Hassle-free license management - users simply register with their institutional email address on Overleaf (or add it to their existing Overleaf account) to join your Overleaf Commons license and receive their upgrade automatically.
+\end{itemize}
+\end{wideslide}
+
+\section[slide=false]{Getting Started}
+
+\begin{wideslide}{How do I Sign Up}
+\begin{itemize}
+    \item Visit \url{https://www.overleaf.com/register}
+    \item Sign up with your email address, Google or ORCID.
+    \begin{itemize}
+        \item Your Lehigh email address and Google account is valid as long as you are a student, staff or faculty.
+        \item Your Overleaf account is tied to the registered email address. If your email address is deactivated, you lose access to your overleaf account.
+        \item Consider using your personal email or Google account for registration.
+        \item Go to Account Settings and add your Lehigh email as your secondary email to convert to a Pro account.
+    \end{itemize}
+\end{itemize}
+\end{wideslide}
+
+\begin{wideslide}{How do I Create a document}
+    \begin{itemize}
+        \item Click on New Project in the left sidebar.
+        \item Choose from 
+        \begin{description}
+            \item[Blank Project]: Start with a empty .tex file.
+            \item[Example Project]: Start with an example article that overleaf provides.
+            \item[Upload Project]: Upload a zip file containing an existing \LaTeX{} project i.e. at least one .tex file.
+            \item[Import from Github]: Import an existing \LaTeX{} project from your Github account.
+        \end{description}
+    \end{itemize}
+\end{wideslide}
+
 \section[slide=false]{\LaTeX{} Basics}
 \begin{wideslide}[toc=,bm=]{Overview}
   \tableofcontents[content=currentsection,type=0]
 \end{wideslide}
+
+\begin{wideslide}[bm={My First \LaTeX{} Document},method=direct]{My First \LaTeX{} Document}
+  \begin{itemize}
+  \item Using your favorite text editor, create a file \texttt{hello.tex} that contains the following lines.
+  \end{itemize}	
+  \begin{lstlisting}
+    %My First LaTeX Document
+    \documentclass{article}
+    \begin{document}
+    Hello World!
+    \end{document}
+  \end{lstlisting}
+  \begin{itemize}
+  \item The first line is a comment. All comments begin with \% symbol.
+  \item The second line tells \LaTeX{} to use the article document class.
+  \item The \lstinline|\begin{document}| command begins the actual document, while
+  \item \lstinline|\end{document}| command ends the document.
+  \item The document content goes within \lstinline|\begin{document}| and \lstinline|\end{document}| commands.
+  \end{itemize}
+\end{wideslide}
+
+\begin{wideslide}[bm={Compile \LaTeX{} Document},method=direct]{Compiling \LaTeX{} Document}
+  \begin{itemize}
+  \item Run one of the following two sets of commands from the command prompt
+    \begin{enumerate}
+    \item \texttt{\color{pdcolor2}latex hello}
+    \item \texttt{\color{pdcolor2}dvips hello} (If you can view postscript files)
+    \item \texttt{\color{pdcolor2}dvipdf hello}
+    \end{enumerate}
+  \item[\textbf{\color{pdcolor2}OR}]
+    \begin{enumerate}
+    \item \texttt{\color{pdcolor2}pdflatex hello}
+    \end{enumerate}
+  \item Open the pdf file created i.e. \texttt{\color{pdcolor2}hello.pdf}
+  \item If your computer has a DVI or postscript viewer, you can view the \texttt{\color{pdcolor2}hello.dvi} or \texttt{\color{pdcolor2}hello.ps} files.
+  \end{itemize}
+\end{wideslide}
+
+\begin{wideslide}[bm={Ancillary Files}]{Ancillary Files}
+  \begin{itemize}
+    \item \LaTeX{} compilation creates a bunch of files with various extensions to store temporary data to use for next compilation
+    \item[\color{pdcolor2}.aux]: A file that transports information from one compiler run to the next. Among other things, the .aux file is used to store information associated with cross-references.
+    \item[\color{pdcolor2}.log]: Gives a detailed account of what happened during the last compiler run.
+    \item[\color{pdcolor2}.toc]: Stores all your section headers. It gets read in for the next compiler run and is used to produce the table of contents.
+    \item[\color{pdcolor2}.lof]: This is like .toc but for the list of figures.
+    \item[\color{pdcolor2}.lot]: And again the same for the list of tables.
+    \item[\color{pdcolor2}.bbl]: Bibliography file output by BiBTeX and used by \LaTeX{}
+    \item[\color{pdcolor2}.blg]: BiBTeX log file. (errors are logged here)
+    \item[\color{pdcolor2}.dvi]: Device Independent File. This is the main result of a \LaTeX{} compile run with latex. You can look at its content with a DVI previewer program or you can send it to a printer with dvips or a similar application.
+  \end{itemize}
+\end{wideslide}
+
+\begin{emptyslide}[toc=,bm=]{}
+\centering
+\vspace{\stretch{1}}
+\includegraphics[height=0.9\slideheight]{./hello.ps}
+\vspace{\stretch{1}}
+\end{emptyslide}
 
 \begin{wideslide}[bm={Syntax},method=file]{Syntax}
   \begin{itemize}
@@ -385,64 +516,6 @@ z
   \end{center}
 \end{wideslide}
 
-\begin{wideslide}[bm={My First \LaTeX{} Document},method=direct]{My First \LaTeX{} Document}
-  \begin{itemize}
-  \item Using your favorite text editor, create a file \texttt{hello.tex} that contains the following lines.
-  \end{itemize}	
-  \begin{lstlisting}
-    %My First LaTeX Document
-    \documentclass{article}
-    \begin{document}
-    Hello World!
-    \end{document}
-  \end{lstlisting}
-  \begin{itemize}
-  \item The first line is a comment. All comments begin with \% symbol.
-  \item The second line tells \LaTeX{} to use the article document class.
-  \item The \lstinline|\begin{document}| command begins the actual document, while
-  \item \lstinline|\end{document}| command ends the document.
-  \item The document content goes within \lstinline|\begin{document}| and \lstinline|\end{document}| commands.
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[bm={Compile \LaTeX{} Document},method=direct]{Compiling \LaTeX{} Document}
-  \begin{itemize}
-  \item Run one of the following two sets of commands from the command prompt
-    \begin{enumerate}
-    \item \texttt{\color{pdcolor2}latex hello}
-    \item \texttt{\color{pdcolor2}dvips hello} (If you can view postscript files)
-    \item \texttt{\color{pdcolor2}dvipdf hello}
-    \end{enumerate}
-  \item[\textbf{\color{pdcolor2}OR}]
-    \begin{enumerate}
-    \item \texttt{\color{pdcolor2}pdflatex hello}
-    \end{enumerate}
-  \item Open the pdf file created i.e. \texttt{\color{pdcolor2}hello.pdf}
-  \item If your computer has a DVI or postscript viewer, you can view the \texttt{\color{pdcolor2}hello.dvi} or \texttt{\color{pdcolor2}hello.ps} files.
-  \end{itemize}
-\end{wideslide}
-
-\begin{wideslide}[bm={Ancillary Files}]{Ancillary Files}
-  \begin{itemize}
-    \item \LaTeX{} compilation creates a bunch of files with various extensions to store temporary data to use for next compilation
-    \item[\color{pdcolor2}.aux]: A file that transports information from one compiler run to the next. Among other things, the .aux file is used to store information associated with cross-references.
-    \item[\color{pdcolor2}.log]: Gives a detailed account of what happened during the last compiler run.
-    \item[\color{pdcolor2}.toc]: Stores all your section headers. It gets read in for the next compiler run and is used to produce the table of contents.
-    \item[\color{pdcolor2}.lof]: This is like .toc but for the list of figures.
-    \item[\color{pdcolor2}.lot]: And again the same for the list of tables.
-    \item[\color{pdcolor2}.bbl]: Bibliography file output by BiBTeX and used by \LaTeX{}
-    \item[\color{pdcolor2}.blg]: BiBTeX log file. (errors are logged here)
-    \item[\color{pdcolor2}.dvi]: Device Independent File. This is the main result of a \LaTeX{} compile run with latex. You can look at its content with a DVI previewer program or you can send it to a printer with dvips or a similar application.
-  \end{itemize}
-\end{wideslide}
-
-\begin{emptyslide}[toc=,bm=]{}
-\centering
-\vspace{\stretch{1}}
-\includegraphics[height=0.9\slideheight]{./hello.ps}
-\vspace{\stretch{1}}
-\end{emptyslide}
-
 \section[slide=false]{Document Structure}
 \begin{wideslide}[toc=,bm=]{Overview}
   \tableofcontents[content=currentsection,type=0]
@@ -466,8 +539,8 @@ z
    ...
 \end{document}
     \end{lstlisting}
-%  \item The reason for marking off the beginning of your text is that LaTeX allows you to insert extra setup specifications before it.
-%  \item The reason for marking off the end of your text is to provide a place for LaTeX to be programmed to do extra stuff automatically at the end of the document, like making an index.
+%  \item The reason for marking off the beginning of your text is that \LaTeX{} allows you to insert extra setup specifications before it.
+%  \item The reason for marking off the end of your text is to provide a place for \LaTeX{} to be programmed to do extra stuff automatically at the end of the document, like making an index.
   \end{itemize}
 \end{wideslide}
 
@@ -578,7 +651,7 @@ z
 
 \begin{wideslide}[bm={Document Structure},method=direct]{Structuring a \LaTeX{} Document}
   \begin{itemize}
-    %  \item A LaTeX document consists of two parts
+    %  \item A \LaTeX{} document consists of two parts
     %    \begin{enumerate}
     %    \item Preamble
     %    \item Main Document
@@ -902,7 +975,7 @@ In section \ref{sec:first} of Chapter \ref{chap:intro}, we wrote our first \LaTe
       \hline
     \end{tabular}
   \end{center}
-  \item Using the \lstinline|$$...$$| should be avoided, as it may cause problems, particularly with the AMS-LaTeX macros.
+  \item Using the \lstinline|$$...$$| should be avoided, as it may cause problems, particularly with the AMS-\LaTeX{} macros.
   \end{itemize}
 \end{wideslide}
 
@@ -1430,6 +1503,80 @@ ghi & jkl & mno
 \[\left.\frac{x^3}{3}\right|_0^1\]
       \end{LTXexample}
     }
+  \end{itemize}
+\end{wideslide}
+
+\begin{wideslide}[bm={Theorems, Lemmas and Corollaries},method=file]{Theorems, Lemmas and Corollaries}
+  \begin{itemize}
+      \item Mathematical documents include elements that require special formatting and numbering such as theorems, definitions, propositions, remarks, corollaries, lemmas and so on.
+      \item Make sure you have the amsthm package enabled: \lstinline|\usepackage{amsthm}|
+     \item In the preamble, add \lstinline|\newtheorem{name}{Printed output}|
+     \item The first argument is the name of the environment that is defined, the second argument is the word that will be printed, in boldface font, at the beginning of the environment. 
+     \item For example: add \lstinline|\newtheorem{theorem}{theorem}| to preamble and the following within the document.
+     \begin{LTXexample}[numbers=none,pos=b]
+\begin{theorem}
+Let $f$ be a function whose derivative exists in every point, then $f$ 
+is a continuous function.
+\end{theorem}
+     \end{LTXexample}
+  \end{itemize}
+\end{wideslide}
+
+\begin{wideslide}[toc=,bm={ },method=direct]{Theorems, Lemmas and Corollaries}
+  \begin{itemize}
+     \item You can add a name within brackets in the environment opening command
+\begin{LTXexample}[numbers=none,pos=b]
+\begin{theorem}[Pythagorean theorem]
+\label{pythagorean}
+This is a theorem about right triangles summarised by 
+equation 
+\[ x^2 + y^2 = z^2 \]
+\end{theorem}
+\end{LTXexample}
+     \item The \lstinline|\newtheorem| command accepts different options to change the numbering style
+     \item \lstinline|\newtheorem{theorem}{Theorem}[section]|: restart the theorem counter for each section.
+     \item \lstinline|\newtheorem{lemma}[theorem]{Lemma}|: Create a new environment lemma that uses the same counter as theorem.
+     \item \lstinline|\newtheorem{corollary}{Corollary}[theorem]|: Create a new environment corollary such that the counter is reset every time a new theorem environment is used.
+     \item \lstinline|\newtheorem*{remark}{remark}|: Create an unnumbered environment for remarks and comments.
+  \end{itemize}
+\end{wideslide}
+
+\begin{wideslide}[bm={Proofs},method=direct]{Proofs}
+\vspace{-0.5cm}
+\begin{LTXexample}[numbers=none,pos=b]
+\begin{corollary}
+There's no right rectangle whose sides measure 3cm, 4cm, and 6cm.
+\end{corollary}
+\begin{lemma}
+Given two line segments whose lengths are $a$ and $b$ respectively there is a 
+real number $r$ such that $b=ra$.
+\end{lemma}
+\begin{corollary}
+There's no right rectangle whose sides measure 3cm, 4cm, and 6cm.
+\end{corollary}
+\begin{remark}
+This statement is true, I guess.
+\end{remark}
+\end{LTXexample}
+\end{wideslide}
+
+
+\begin{wideslide}[toc=,bm={},method=direct]{Proofs}
+  \begin{itemize}
+  \item Proofs are the core of mathematical papers and books and is customary to keep them visually apart from the normal text in the document. 
+\begin{LTXexample}[numbers=none,pos=b]
+  \begin{lemma}
+Given two line segments whose lengths are $a$ and $b$ respectively there 
+is a real number $r$ such that $b=ra$.
+\end{lemma}
+
+\begin{proof}
+To prove it by contradiction try and assume that the statement is false,
+proceed from there and at some point you will arrive to a contradiction.
+\end{proof}
+\end{LTXexample}
+  \item A special symbol is used to mark the end of the proof. 
+  \item To change the symbol to say a blacksquare, add \lstinline|\renewcommand\qedsymbol{$\blacksquare$}| to the preamble
   \end{itemize}
 \end{wideslide}
 
