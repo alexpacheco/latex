@@ -4,7 +4,7 @@ pdf: ps
 	ps2pdf ${filename}.ps
 
 ps: dvi
-	dvips ${filename}.dvi
+	dvips -landscaperotate ${filename}.dvi
 
 dvi:
 	latex ${filename}

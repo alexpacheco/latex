@@ -13,14 +13,17 @@ This tutorial provides an overview of using LaTeX for creating documents
 
  * [LSU](powerdot-lsuloni.sty)
  * [Lehigh](powerdot-lehigh.sty) 
+ * [NJIT](powerdot-njit.sty)
 
 <br />
 <br />
 <br />
 <br />
+
 # Author
 Alex Pacheco  
- Manager, Research Computing, Lehigh University (Sep. 2014 - Present)  
+ Associate CIO, Advanced Research Computing, NJIT (Aug. 2022 - Present)
+ Manager, Research Computing, Lehigh University (Sep. 2014 - Jul. 2022)  
  HPC User Services Consultant, LSU & LONI (Aug. 2010 - Sep. 2014)  
 <br />
 <br />

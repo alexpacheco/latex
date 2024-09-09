@@ -2,16 +2,16 @@
 \pdsetup{
   palette=lehigh,
   logohook=tl,
-  logopos={0.005\slidewidth,0.995\slideheight},
-  logocmd={\includegraphics[trim=0 -1 0 0,clip,width=.30\slidewidth,height=.08\slideheight]{lehigh.eps}},
+  logopos={0.01\slidewidth,0.998\slideheight},
+  logocmd={\includegraphics[trim=0 -1 0 0,clip,height=.07\slidewidth,keepaspectratio=true]{njit.eps}},
   lf={\color{black}Creating Documents with \LaTeX{}},
   %lf={\color{black}\sectiontitle},
   cf={\color{black}Research Computing Seminars},
   theslide={\color{black}\arabic{slide}~/~\pageref*{lastslide}}
 }
  
-\definecolor{pdcolor2}{RGB}{241,231,200}%lucream
-\definecolor{pdcolor3}{RGB}{102,55,0}%lubrown
+\definecolor{pdcolor2}{RGB}{192,192,192}%njitgray
+\definecolor{pdcolor3}{RGB}{204,0,0}%njitred
 \definecolor{lucyan}{RGB}{0,164,228}
 \definecolor{lumagenta}{RGB}{236,81,157}
 \definecolor{lugold}{RGB}{255,196,35}
@@ -54,7 +54,7 @@
   morekeywords={part,chapter,subsection,subsubsection,paragraph,subparagraph},
   identifierstyle=\color{magenta},
   commentstyle=\color{red},
-  backgroundcolor=\color{pdcolor3},
+  backgroundcolor=\color{black},
   tabsize=2,
   columns=flexible,
   escapeinside={\%*}{*)},
